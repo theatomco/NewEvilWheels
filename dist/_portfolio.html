@@ -1,0 +1,48 @@
+<div class="portfolio">
+	<div class="nav header">
+		<a href="/"><h1>Tamik Android<small>Web &amp; iOS developer</small></h1></a>
+		<!-- <span class="description">Rider, Designer, Developer, Traveler, Idiot</span> -->
+		<nav>
+			<ul>
+				<li><a href="/about" title="About me">About</a></li>
+				<li><a href="/portfolio" class="active" title="My portfolio">Portfolio</a></li>
+			</ul>
+		</nav>
+	</div>
+	<div class="scroll">
+		<div class="apps">
+			<!-- <div class="app" ng-repeat="app in apps | orderBy:'-id'">
+				<h1>{{app.title}}</h1>
+				<span class="new"></span>
+				<div class="icon" style="background-image: url({{app.icon}});"></div>
+			</div> -->
+			<a ui-sref="modal.app({appName: app.name})" class="app" ng-repeat="app in apps | orderBy:'-id'">
+				<h1>{{app.title}}</h1>
+				<span class="new"></span>
+				<div class="icon" style="background-image: url({{app.icon}});"></div>
+			</a>
+		</div>
+	</div>
+	<div class="contact">
+		<a href="mailto:hello@Tamik.ru" title="Write Me">hello@Tamik.ru</a>
+	</div>
+</div>
+<!-- <div class="modal" ui-view="modal" autoscroll="false"></div> -->
+<!-- <script>
+	// $(window).ready(function() {
+	// 		var projects = ["Blank", "OrganicBrand", "CDN", "EvilWheels", "DualChat"];
+	//
+	// 		for(i = 0; i < projects.length; i++) {
+	// 			initProject(projects[i]);
+	// 		}
+	// });
+	// function initProject(name) {
+	// 	var icon = "background-image: url(/native/p/" + name + ".jpg);";
+	// 	$(".apps").append('<div class="app" onclick="showProject(\'' + name + '\');"><span class="new"></span><h1>' + name + '</h1><div class="icon" style="' + icon + '"></div></div>');
+	// }
+	// $(window).load(function() {
+	// 	$(".portfolio > a > h1").hover(function() {
+	// 		(".portfolio > a > h1 > small").css();
+	// 	});
+	// });
+</script> -->

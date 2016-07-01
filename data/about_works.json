@@ -1,0 +1,14 @@
+[
+	{
+		"company": "Company",
+		"position": "Position",
+		"time": "2016 - now",
+		"description": "Description"
+	},
+	{
+		"company": "Компания",
+		"position": "Должность",
+		"time": "2013 - 2015",
+		"description": "Описание"
+	}
+]

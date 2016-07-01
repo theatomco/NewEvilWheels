@@ -1,0 +1,60 @@
+// @media(max-width: 768px) {
+// 	//ipad
+// }
+//
+// @media(max-width: 414px) {
+// 	//iphone 6 plus
+// }
+//
+// @media(max-width: 375px) {
+// 	//iphone 6
+// }
+//
+// @media(max-width: 320px) {
+// 	//iphone 5
+// }
+
+@font-face {
+	font-family: 'Roboto';
+	font-weight: 300;
+	font-style: normal;
+	src: local('Roboto'), url(http://cdn.Tamik.ru/storage/fonts/Roboto/Thin.ttf);
+}
+
+@font-face {
+	font-family: 'Roboto';
+	font-weight: 400;
+	font-style: normal;
+	src: local('Roboto'), url(http://cdn.Tamik.ru/storage/fonts/Roboto/Regular.ttf);
+}
+
+@font-face {
+	font-family: 'Roboto';
+	font-weight: 500;
+	font-style: normal;
+	src: local('Roboto'), url(http://cdn.Tamik.ru/storage/fonts/Roboto/Medium.ttf);
+}
+
+@font-face {
+	font-family: 'Roboto';
+	font-weight: 600;
+	font-style: normal;
+	src: local('Roboto'), url(http://cdn.Tamik.ru/storage/fonts/Roboto/Bold.ttf);
+}
+
+@font-face {
+	font-family: 'Roboto';
+	font-weight: 700;
+	font-style: normal;
+	src: local('Roboto'), url(http://cdn.Tamik.ru/storage/fonts/Roboto/Black.ttf);
+}
+
+@import "theme";
+@import "home";
+@import "event";
+@import "components";
+
+::selection {
+	background-color: rgba(0, 90, 255, 0.75);
+	color: rgba(255, 255, 255, 1);
+}

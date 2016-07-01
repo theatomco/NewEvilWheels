@@ -1,0 +1,40 @@
+<div class="about">
+	<div class="background"></div>
+	<div class="nav header">
+		<a href="/"><h1>Tamik Android<small>Web &amp; iOS developer</small></h1></a>
+		<!-- <span class="description">Rider, Designer, Developer, Traveler, Idiot</span> -->
+		<nav>
+			<ul>
+				<li><a href="/about" class="active" title="About me">About</a></li>
+				<li><a href="/portfolio" title="My portfolio">Portfolio</a></li>
+			</ul>
+		</nav>
+	</div>
+	<span class="me">{{about.me}}</span>
+	<div class="photo"><img ng-src="{{about.photo}}" alt="Me"></div>
+	<div class="content">
+		<p class="message">{{about.message}}</p>
+		<div class="skills">
+			<h1>Skills</h1>
+			<div class="skill" ng-repeat="skill in skills">
+				<h1>{{skill.title}}<span class="value">{{skill.value}}</span></h1>
+				<div class="progress"><span style="width: {{skill.value}}%;"></span></div>
+			</div>
+			<div class="skill">
+				<h1>&amp; Other</h1>
+			</div>
+		</div>
+		<div class="works">
+			<h1>Works</h1>
+			<div class="work" ng-repeat="work in works">
+				<h1>{{work.company}}<span class="position">{{work.position}}</span><span class="time">{{work.time}}</span></h1>
+				<p class="description">{{work.description}}</p>
+			</div>
+		</div>
+		<div class="education"></div>
+		<div class="contact">
+			<h1>Write me:</h1>
+			<a href="#">hello@Tamik.ru</a>
+		</div>
+	</div>
+</div>
