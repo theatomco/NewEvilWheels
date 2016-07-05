@@ -1,0 +1,11 @@
+<section class="events" id="events">
+	<div class="event" ng-repeat="event in events | orderBy:'-id'">
+		<div class="background" style="background-image: url({{event.image}});"></div>
+		<div class="info">
+			<span class="date">{{event.date}}</span>
+			<h2 class="title">{{event.title}}</h2>
+			<p class="description">{{event.description}}</p>
+			<a href="/events/{{event.link}}" class="button" title="Подробнее о мероприятии {{event.title}}">Подробнее</a>
+		</div>
+	</div>
+</section>

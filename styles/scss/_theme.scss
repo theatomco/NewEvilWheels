@@ -16,26 +16,58 @@ ol, ul, li {
 }
 
 a {
-	color: rgba(0, 90, 255, 0.75);
+	color: $digital;
 	text-decoration: none;
+}
+
+.debugMenu {
+	position: absolute;
+	top: 20px;
+	left: 20px;
+	background-color: $white;
+	border-radius: 6px;
+	width: 200px;
+	padding: 15px;
+	z-index: 100000;
+	box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.25);
+
+	h2 {
+		width: auto;
+		text-align: center;
+		cursor: default;
+		vertical-align: top;
+
+		span {
+			font-weight: 400;
+			font-size: 20px;
+			color: rgba(0, 0, 0, 0.5);
+			cursor: pointer;
+			vertical-align: top;
+		}
+	}
+
+	button {
+		width: 100%;
+		margin-top: 5px;
+	}
 }
 
 button {
 	font-size: 16px;
 	font-weight: 600;
-	background-color: rgba(255, 255, 255, 1);
-	border: 2px solid rgba(255, 255, 255, 1);
+	display: inline-block;
+	background-color: $white;
+	border: 2px solid $white;
 	border-radius: 4px;
 	padding: 10px;
-	color: rgba(0, 0, 0, 1);
+	color: $black;
 	cursor: pointer;
 	text-transform: uppercase;
 	transition: all 0.25s ease;
 
 	&:hover {
-		// background-color: transparent;
 		background-color: rgba(255, 255, 255, 0.1);
-		color: rgba(255, 255, 255, 1);
+		color: $white;
 	}
 
 	&:active {
@@ -44,11 +76,11 @@ button {
 
 	&.inverted {
 		background-color: transparent;
-		color: rgba(255, 255, 255, 1);
+		color: $white;
 
 		&:hover {
-			background-color: rgba(255, 255, 255, 1);
-			color: rgba(0, 0, 0, 1);
+			background-color: $white;
+			color: $black;
 		}
 	}
 
@@ -60,25 +92,40 @@ button {
 		&:hover {
 			background-color: rgba(0, 0, 0, 0.5);
 		}
+
+		&.inverted {
+			background-color: transparent;
+		}
+	}
+
+	&.primary {
+		background-color: $black;
+		border-color: $black;
+		color: $white;
+
+		&:hover {
+			background-color: transparent;
+			color: $black;
+		}
 	}
 }
 
 .button {
 	font-size: 16px;
 	font-weight: 600;
-	background-color: rgba(255, 255, 255, 1);
-	border: 2px solid rgba(255, 255, 255, 1);
+	display: inline-block;
+	background-color: $white;
+	border: 2px solid $white;
 	border-radius: 4px;
 	padding: 10px;
-	color: rgba(0, 0, 0, 1);
+	color: $black;
 	cursor: pointer;
 	text-transform: uppercase;
 	transition: all 0.25s ease;
 
 	&:hover {
-		// background-color: transparent;
 		background-color: rgba(255, 255, 255, 0.1);
-		color: rgba(255, 255, 255, 1);
+		color: $white;
 	}
 
 	&:active {
@@ -87,11 +134,36 @@ button {
 
 	&.inverted {
 		background-color: transparent;
-		color: rgba(255, 255, 255, 1);
+		color: $white;
 
 		&:hover {
-			background-color: rgba(255, 255, 255, 1);
-			color: rgba(0, 0, 0, 1);
+			background-color: $white;
+			color: $black;
+		}
+	}
+
+	&.control {
+		background-color: rgba(0, 0, 0, 0.3);
+		border-color: transparent;
+		padding: 0px;
+
+		&:hover {
+			background-color: rgba(0, 0, 0, 0.5);
+		}
+
+		&.inverted {
+			background-color: transparent;
+		}
+	}
+
+	&.primary {
+		background-color: $black;
+		border-color: $black;
+		color: $white;
+
+		&:hover {
+			background-color: transparent;
+			color: $black;
 		}
 	}
 }
@@ -103,7 +175,6 @@ button {
 	background-repeat: no-repeat;
 	width: 35px;
 	height: 35px;
-	text-indent: -9999px;
 
 	&.arrow-left {
 		background-image: url(/native/arLeft.png);
@@ -112,4 +183,58 @@ button {
 	&.arrow-right {
 		background-image: url(/native/arRight.png);
 	}
+
+	&.close {
+		background-image: url(/native/close.png);
+	}
+
+	&.map {
+		&.mtb {
+			background-image: url(/native/mapControls/MTBtrail.png);
+		}
+
+		&.moto {
+			background-image: url(/native/mapControls/MOTOtrail.png);
+		}
+
+		&.atv {
+			background-image: url(/native/mapControls/ATVtrail.png);
+		}
+	}
+}
+
+.line {
+	display: inline-block;
+	background-color: rgba(0, 0, 0, 0.25);
+	border-radius: 3px;
+	width: 5px;
+	height: 35px;
+	vertical-align: middle;
+
+	&.green {
+		background-color: $greenLine;
+	}
+
+	&.blue {
+		background-color: $blueLine;
+	}
+
+	&.red {
+		background-color: $redLine;
+	}
+
+	&.black {
+		background-color: $black;
+	}
+}
+
+@keyframes scrollEncourage {
+	0% {}
+	50% {
+		height: 6px;
+	}
+	75% {
+		height: 12px;
+	}
+	100% {}
 }
