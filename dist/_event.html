@@ -1,11 +1,11 @@
 <div class="eventView">
 	<header class="event">
 		<nav>
-			<a href="/" class="button inverted">Вернуться</a>
+			<a href="/events" class="button inverted">Вернуться</a>
 		</nav>
 		<div class="background" style="background-image: url({{event.image}});"></div>
-		<h1 class="title">{{event.title}}</h1>
-		<span class="date">{{event.date}}</span>
+		<h1 class="title">{{event.title || "404"}}</h1>
+		<span class="date">{{event.date || "Данного мероприятия не существует"}}</span>
 		<span class="location">{{event.location}}</span>
 	</header>
 	<div class="content">

@@ -1,11 +1,22 @@
+<div class="btw">
+	<a href="/" class="mainPage" title="На главную">
+		<div class="logo"></div>
+	</a>
+	<h2>Мероприятия <span>2014&ndash;2016</span></h2>
+</div>
 <section class="events" id="events">
 	<div class="event" ng-repeat="event in events | orderBy:'-id'">
 		<div class="background" style="background-image: url({{event.image}});"></div>
 		<div class="info">
 			<span class="date">{{event.date}}</span>
-			<h2 class="title">{{event.title}}</h2>
+			<h2 class="title">{{event.title}}<small ng-if="event.announce">АНОНС</small></h2>
 			<p class="description">{{event.description}}</p>
-			<a href="/events/{{event.link}}" class="button" title="Подробнее о мероприятии {{event.title}}">Подробнее</a>
+			<a href="/events/{{event.link}}" class="button" title="Подробнее о мероприятии {{event.title}}" ng-if="!event.announce">Подробнее</a>
 		</div>
+	</div>
+</section>
+<section class="contacts" style="margin: 50px auto;">
+	<div class="copyright">
+		<p style="color: rgba(0, 0, 0, 0.5);">Кабардино-Балкарская республиканская организация по развитию экстримальных видов спорта «Лихие Колеса» &copy; Все права защищены.</p>
 	</div>
 </section>

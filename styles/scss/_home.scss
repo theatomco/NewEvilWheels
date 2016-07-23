@@ -97,26 +97,6 @@ section {
 					background-image: url(/native/logoInverted.png);
 				}
 			}
-
-			.onsite {
-				display: none;
-				width: 100%;
-				margin-top: 50px;
-				text-align: center;
-
-				a {
-					font-size: 28px;
-					font-weight: 500;
-					border-bottom: 2px solid transparent;
-					margin: 0px 15px;
-					color: $white;
-					transition: border-color 0.25s ease;
-
-					&:hover {
-						border-color: $white;
-					}
-				}
-			}
 		}
 
 		.scrollContainer {
@@ -159,6 +139,7 @@ section {
 		}
 
 		.aboutMessage {
+			position: relative;
 			width: 100%;
 			max-width: 780px;
 			margin: 50px auto;
@@ -176,117 +157,13 @@ section {
 		}
 	}
 
-	&.crew {
-		height: 300px;
-
-		.person {
-			width: 33.3%;
-			height: 120px;
-			text-align: center;
-			color: $black;
-			cursor: default;
-			float: left;
-
-			.photo {
-				display: inline-block;
-				background-color: rgba(220, 220, 220, 1);
-				background-size: cover;
-				background-position: center;
-				background-repeat: no-repeat;
-				border-radius: 100%;
-				width: 75px;
-				height: 75px;
-				vertical-align: middle;
-			}
-
-			.info {
-				display: inline-block;
-				vertical-align: middle;
-				width: 200px;
-				color: $black;
-
-				&:hover {
-					.name {
-						border-color: $black;
-					}
-				}
-
-				.name {
-					font-weight: 600;
-					font-size: 18px;
-					border-bottom: 2px solid transparent;
-					transition: border-color 0.25s ease;
-				}
-
-				.position {
-					display: block;
-					margin-top: 2px;
-				}
-			}
-		}
-	}
-
-	&.map {
-		height: 700px;
-
-		.mapContainer {
-			width: 100%;
-			height: 500px;
-
-			#trailMap {
-				height: 100%;
-			}
-		}
-
-		.mapLegend {
-			width: 100%;
-			height: 200px;
-			text-align: center;
-
-			.item {
-				display: inline-block;
-				width: 220px;
-				height: 75px;
-				margin-top: 25px;
-				cursor: default;
-
-				&#bikeTrail, &#motoTrail, &#atvTrail {
-					&:hover {
-						cursor: pointer;
-
-						p {
-							border-color: $black;
-						}
-					}
-				}
-
-				.icon {
-					display: inline-block;
-					width: 50px;
-					height: 50px;
-					vertical-align: middle;
-				}
-
-				p {
-					font-weight: 600;
-					font-size: 18px;
-					display: inline-block;
-					border-bottom: 2px dashed transparent;
-					margin-left: 10px;
-					vertical-align: middle;
-					transition: border-color 0.25s ease;
-				}
-			}
-		}
-	}
-
 	&.sideprojects {
 		height: 250px;
 
 		.project {
 			position: relative;
 			display: inline-table;
-			width: 33.33%;
+			width: 33.333%;
 			height: 250px;
 			float: left;
 			transition: opacity 0.25s ease;
@@ -342,6 +219,62 @@ section {
 		}
 	}
 
+	&.map {
+		height: 700px;
+
+		.mapContainer {
+			width: 100%;
+			height: 500px;
+
+			#trailMap {
+				height: 100%;
+			}
+		}
+
+		.mapLegend {
+			width: 100%;
+			height: 200px;
+			text-align: center;
+
+			.item {
+				display: inline-block;
+				width: 220px;
+				height: 75px;
+				margin-top: 25px;
+				cursor: default;
+
+				&#bikeTrail, &#motoTrail, &#atvTrail {
+					text-transform: uppercase;
+
+					&:hover {
+						cursor: pointer;
+
+						p {
+							border-color: $black;
+						}
+					}
+				}
+
+				.icon {
+					display: inline-block;
+					width: 50px;
+					height: 50px;
+					vertical-align: middle;
+				}
+
+				p {
+					font-weight: 600;
+					font-size: 18px;
+					display: inline-block;
+					border-bottom: 2px dotted transparent;
+					margin-left: 10px;
+					vertical-align: middle;
+					transition: border-color 0.25s ease;
+				}
+			}
+		}
+	}
+
 	&.videos {
 		height: 500px;
 
@@ -387,6 +320,14 @@ section {
 								display: table-cell;
 								vertical-align: middle;
 
+								span {
+									font-weight: 500;
+									font-size: 18px;
+									text-transform: uppercase;
+									color: rgba(255, 255, 255, 0.7);
+									cursor: default;
+								}
+
 								h2 {
 									font-size: 56px;
 									text-transform: uppercase;
@@ -396,6 +337,7 @@ section {
 									small {
 										font-size: 24px;
 										display: block;
+										margin-top: 10px;
 										color: rgba(255, 255, 255, 0.75);
 									}
 								}
@@ -500,6 +442,19 @@ section {
 					margin-top: 10px;
 					cursor: default;
 					text-transform: uppercase;
+
+					small {
+						display: inline-block;
+						font-weight: 400;
+						font-size: 16px;
+						border: 2px solid currentColor;
+						border-radius: 6px;
+						margin-top: 2px;
+						margin-left: 10px;
+						padding: 5px;
+						vertical-align: top;
+						opacity: 0.5;
+					}
 				}
 
 				.description {
@@ -615,6 +570,58 @@ section {
 		}
 	}
 
+	&.crew {
+		display: none;
+		height: 300px;
+		margin-top: 50px;
+
+		.person {
+			width: 33.3%;
+			height: 120px;
+			text-align: center;
+			color: $black;
+			cursor: default;
+			float: left;
+
+			.photo {
+				display: inline-block;
+				background-color: rgba(220, 220, 220, 1);
+				background-size: cover;
+				background-position: center;
+				background-repeat: no-repeat;
+				border-radius: 100%;
+				width: 75px;
+				height: 75px;
+				vertical-align: middle;
+			}
+
+			.info {
+				display: inline-block;
+				vertical-align: middle;
+				width: 200px;
+				color: $black;
+
+				&:hover {
+					.name {
+						border-color: $black;
+					}
+				}
+
+				.name {
+					font-weight: 600;
+					font-size: 18px;
+					border-bottom: 2px solid transparent;
+					transition: border-color 0.25s ease;
+				}
+
+				.position {
+					display: block;
+					margin-top: 2px;
+				}
+			}
+		}
+	}
+
 	&.contacts {
 		.person {
 			width: 50%;
@@ -634,13 +641,15 @@ section {
 			}
 
 			a {
-				&:hover {
-					.inc {
-						.number {
-							border-color: currentColor;
-						}
-					}
-				}
+				cursor: default;
+				// &:hover {
+				// 	.inc {
+				// 		.number {
+				// 			border-color: currentColor;
+				// 		}
+				// 	}
+				// }
+
 				.photo {
 					display: inline-block;
 					background-color: rgba(220, 220, 220, 1);
@@ -712,8 +721,157 @@ section {
 	}
 }
 
+@media(min-width: 1440px) {
+	section {
+		&.start {
+			.social {
+				.icon {
+					width: 65px;
+					height: 65px;
+					margin-top: 15px;
+				}
+			}
+
+			.windowContainer {
+				width: 800px;
+				height: 400px;
+				margin-top: -200px;
+				margin-left: -400px;
+
+				.logo {
+					width: 800px;
+					height: 400px;
+				}
+			}
+		}
+
+		&.sideprojects {
+			height: 350px;
+
+			.project {
+				height: 350px;
+
+				.container {
+					margin-top: 50px;
+				}
+			}
+		}
+
+		&.map {
+			height: 900px;
+
+			.mapContainer {
+				height: 700px;
+			}
+		}
+
+		&.videos {
+			height: 700px;
+
+			.wrapper {
+				.slider {
+					height: 700px;
+
+					ul {
+						li {
+							height: 700px;
+						}
+					}
+				}
+			}
+
+			.controls {
+				margin-top: -375px;
+			}
+		}
+
+		&.events {
+			.event {
+				height: 400px;
+
+				.info {
+					margin-top: 110px;
+				}
+			}
+		}
+
+		&.followus {
+			height: 900px;
+
+			.container {
+				margin-top: -175px;
+			}
+		}
+
+		&.crew {
+			height: 400px;
+
+			.person {
+				height: 130px;
+
+				.photo {
+					width: 85px;
+					height: 85px;
+				}
+
+				.info {
+					.name {
+						font-size: 20px;
+					}
+				}
+			}
+		}
+
+		&.contacts {
+			.person {
+				h3 {
+					font-size: 38px;
+				}
+
+				a {
+
+					.photo {
+						width: 85px;
+						height: 85px;
+					}
+
+					.inc {
+						.number {
+							font-size: 26px;
+						}
+
+						.name {
+							font-size: 20px;
+						}
+					}
+				}
+			}
+
+			.mail {
+				h3 {
+					font-size: 50px;
+				}
+
+				h2 {
+					font-size: 58px;
+				}
+			}
+
+			.copyright {
+				p {
+					font-size: 18px;
+				}
+			}
+		}
+	}
+}
+
 // section {
 // 	&.start {
+// 		display: none;
+// 	}
+//
+// 	&.about {
 // 		display: none;
 // 	}
 //
@@ -740,10 +898,14 @@ section {
 // 	&.followus {
 // 		display: none;
 // 	}
+//
+//  &.contacts {
+//  	display: none;
+//  }
 // }
 
 .btw {
-	margin: 50px 75px;
+	padding: 50px 75px;
 
 	h2 {
 		display: inline-block;
@@ -775,6 +937,20 @@ section {
 		text-align: center;
 	}
 
+	&.clickable {
+		margin-top: 25px;
+		cursor: pointer;
+		transition: background-color 0.25s ease;
+
+		&:hover {
+			background-color: rgba(0, 90, 255, 0.1);
+		}
+
+		h2 {
+			cursor: pointer;
+		}
+	}
+
 	.controls {
 		display: inline-block;
 		width: auto;
@@ -792,7 +968,7 @@ section {
 			border-radius: 4px;
 			padding: 0px;
 			margin: 0px;
-		    width: 120px;
+		    width: 140px;
 			color: $black;
 		    overflow: hidden;
 

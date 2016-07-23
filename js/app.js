@@ -10,12 +10,6 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
 			pageTitle: 'Команда Evil Wheels',
 			controller: 'homeCtrl'
 		})
-		// .state('about', {
-		// 	url: '/about',
-		// 	templateUrl: '/dist/_about.html',
-		// 	pageTitle: 'О команде Evil Wheels',
-		// 	controller: 'aboutCtrl'
-		// })
 		.state('events', {
 			url: '/events',
 			templateUrl: '/dist/_events.html',
@@ -28,45 +22,36 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
 			pageTitle: 'Мероприятие Evil Wheels',
 			controller: 'eventCtrl'
 		})
+		.state('map', {
+			url: '/map',
+			templateUrl: '/dist/_map.html',
+			pageTitle: 'Трассы Evil Wheels',
+			controller: 'emapCtrl'
+		})
+		.state('video', {
+			url: '/video',
+			templateUrl: '/dist/_video.html',
+			pageTitle: 'Видео Evil Wheels',
+			controller: 'videoCtrl'
+		})
+		.state('crew', {
+			url: '/crew',
+			templateUrl: '/dist/_crew.html',
+			pageTitle: 'Состав Evil Wheels',
+			controller: 'crewCtrl'
+		})
+		.state('contacts', {
+			url: '/contacts',
+			templateUrl: '/dist/_contacts.html',
+			pageTitle: 'Контакты Evil Wheels',
+			controller: 'contactsCtrl'
+		})
 		.state('location', {
 			url: '/location',
 			templateUrl: '/dist/_location.html',
 			pageTitle: 'Как добраться до Мотошколы Evil Wheels',
 			controller: 'locationCtrl'
 		})
-		// .state('modal', {
-		// 	views: {
-		// 		'modal': {
-		// 			templateUrl: '/native/dist/_modal.html'
-		// 		}
-		// 	},
-		// 	onEnter: function($state) {
-		// 		$(window).on('keyup', function(e) {
-		// 			if(e.keyCode == 27) {
-		// 				$(document).off('keyup');
-		// 				$state.go('portfolio');
-		// 			}
-		// 		});
-		//
-		// 		$(document).on('click', '.modal, .modal > .view > .header > .close', function() {
-		// 			$state.go('portfolio');
-		// 		});
-		//
-		// 		$(document).on('click', '.modal > .view', function(e) {
-		// 			e.stopPropagation();
-		// 		});
-		// 	},
-		// 	abstract: true
-		// })
-		// .state('modal.view', {
-		// 	url: '/app/:appName',
-		// 	pageTitle: '',
-		// 	views: {
-		// 		'modal': {
-		// 			templateUrl: '/native/dist/_modalView.html'
-		// 		}
-		// 	}
-		// });
 	$locationProvider.html5Mode(true);
 });
 
@@ -82,7 +67,7 @@ appCtrl.controller('homeCtrl', ['$scope', '$http', function($scope, $http) {
 	});
 
 	angular.element(document).ready(function() {
-		var backgrounds = ["/data/eventsCover/funnybunny.jpg", "/data/eventsCover/funnybunnyvol2.jpg", "/data/eventsCover/smoto2015.jpg", "/data/eventsCover/smoto2016.jpg", "http://evilwheels.ru/native/landing.jpg"];
+		var backgrounds = ["/data/eventsCover/funnybunny.jpg", "/data/eventsCover/funnybunnyvol2.jpg", "/data/eventsCover/smoto2015.jpg", "/data/eventsCover/smoto2016.jpg", "/native/landing.jpg"];
 
 		var currentBackground = backgrounds[Math.floor(Math.random()*backgrounds.length)];
 
@@ -99,7 +84,7 @@ appCtrl.controller('homeCtrl', ['$scope', '$http', function($scope, $http) {
 			sidePage: true
 		});
 
-		var map = L.map('trailMap', {scrollWheelZoom:false}).setView([43.20, 43.63], 8); // 43.50 43.63 13
+		var map = L.map('trailMap', {scrollWheelZoom:false}).setView([43.20, 43.63], 8); // 43.50 43.63 13 // 43.20 43.63 8
 
 		L.tileLayer('https://api.mapbox.com/styles/v1/tamik/cipl12pqa0008dpm316s85ki9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoidGFtaWsiLCJhIjoiY2lwajBpYzRyMDA1M3ZibnQybzdhaXUzMSJ9.nGA_WBvVuRNdB4fNde1sBQ', {
 			attribution: '© <a href="http://mapbox.com">Mapbox</a>',
@@ -125,30 +110,76 @@ appCtrl.controller('homeCtrl', ['$scope', '$http', function($scope, $http) {
 			iconAnchor: [32, 32]
 		});
 
-		var armkhi = new L.marker([42.80664800, 44.70481700], {icon: MTBicon});
-		var elbrus = new L.marker([43.26601670, 42.48405440], {icon: MOTOicon});
-		var nalchik = new L.marker([43.46120250, 43.68147440], {icon: ATVicon});
-		var garden = new L.marker([43.44898040, 43.63901780], {icon: ATVicon});
+		var bikeparkArmkhi = new L.marker([42.80664800, 44.70481700], {icon: MTBicon});
 
-		armkhi.on('click', function() {
-			displayModal("armkhi");
+		var azauEnduroTrack = new L.marker([43.26601670, 42.48405440], {icon: MOTOicon});
+		var nalchikGarden = new L.marker([43.44898040, 43.63901780], {icon: MOTOicon});
+
+		var nalchik2gerpegezh = new L.marker([43.46120250, 43.68147440], {icon: ATVicon});
+		var nalchikPaidTrack1 = new L.marker([43.43937530, 43.64105580], {icon: ATVicon});
+		var nalchikPaidTrack2 = new L.marker([43.43752180, 43.64441570], {icon: ATVicon});
+		var nalchikPaidTrack3 = new L.marker([43.46882870, 43.65973870], {icon: ATVicon});
+
+		bikeparkArmkhi.on('click', function() {
+			displayModal("bikeparkarmkhi");
 		});
 
-		elbrus.on('click', function() {
-			displayModal("elbrus");
+		azauEnduroTrack.on('click', function() {
+			displayModal("azauendurotrack");
 		});
 
-		nalchik.on('click', function() {
-			displayModal("nalchik");
+		nalchik2gerpegezh.on('click', function() {
+			displayModal("nalchik2gerpegezh");
 		});
 
-		garden.on('click', function() {
-			displayModal("garden");
+		nalchikGarden.on('click', function() {
+			displayModal("nalchikgarden");
 		});
 
-		var mtb = new L.layerGroup([armkhi]);
-		var moto = new L.layerGroup([elbrus]);
-		var atv = new L.layerGroup([nalchik, garden]);
+		nalchikPaidTrack1.on('click', function() {
+			displayModal("nalchikpaidtrack1");
+		});
+
+		nalchikPaidTrack2.on('click', function() {
+			displayModal("nalchikpaidtrack2");
+		});
+
+		nalchikPaidTrack3.on('click', function() {
+			displayModal("nalchikpaidtrack3");
+		});
+
+		// var mtb = new L.layerGroup([bikeparkArmkhi]);
+		// var moto = new L.layerGroup([azauEnduroTrack]);
+		// var atv = new L.layerGroup([nalchik2gerpegezh, nalchikGarden, nalchikPaidTrack1, nalchikPaidTrack2, nalchikPaidTrack3]);
+
+		var mtb = new L.markerClusterGroup({
+			iconCreateFunction: function(cluster) {
+				return L.divIcon({html: '<img src="/native/mapControls/MTBtrailLoop.png" width="64px" height="64px">'});
+			},
+			showCoverageOnHover: false
+		});
+		var moto = new L.markerClusterGroup({
+			iconCreateFunction: function(cluster) {
+				return L.divIcon({html: '<img src="/native/mapControls/MOTOtrailLoop.png" width="64px" height="64px">'});
+			},
+			showCoverageOnHover: false
+		});
+		var atv = new L.markerClusterGroup({
+			iconCreateFunction: function(cluster) {
+				return L.divIcon({html: '<img src="/native/mapControls/ATVtrailLoop.png" width="64px" height="64px">'});
+			},
+			showCoverageOnHover: false
+		});
+
+		mtb.addLayer(bikeparkArmkhi);
+
+		moto.addLayer(azauEnduroTrack);
+		moto.addLayer(nalchikGarden);
+
+		atv.addLayer(nalchik2gerpegezh);
+		atv.addLayer(nalchikPaidTrack1);
+		atv.addLayer(nalchikPaidTrack2);
+		atv.addLayer(nalchikPaidTrack3);
 
 		// atv.on('click', function() {
 		// 	alert(atv.getLatLng());
@@ -224,55 +255,95 @@ appCtrl.controller('homeCtrl', ['$scope', '$http', function($scope, $http) {
 			$modalView.html(value);
 		}
 
-		$("#debugClose").click(function() {
-			debug('close');
-		});
+		$("#prev").click(function(event) {
+			$("#playP1").parent().parent().fadeIn(150);
+			$("#playP2").parent().parent().fadeIn(150);
+			$("#playP3").parent().parent().fadeIn(150);
+			$("#playP4").parent().parent().fadeIn(150);
 
-		$("#debugBG").click(function() {
-			debug('bg');
-		});
-
-		$("#debugMenu").click(function() {
-			debug('menu');
-		});
-
-		function debug(value) {
-			switch(value) {
-				case "close": $(".debugMenu").css({"display":"none"});
-				break;
-				case "bg": $("#mainBackground").css({"background-image":"url(http://evilwheels.ru/native/landing.jpg)"});
-				break;
-				case "menu": if($(".onsite").hasClass("debugActive")) { $(".onsite").css({"display":"none"}).removeClass("debugActive"); } else { $(".onsite").css({"display":"block"}).addClass("debugActive"); }
-				break;
+			if($("#videoP1")[0].src == "https://www.youtube.com/embed/fq6ut-9igBs?rel=0&showinfo=0&autoplay=1") {
+				$("#videoP1")[0].src = "https://www.youtube.com/embed/fq6ut-9igBs?rel=0&showinfo=0&autoplay=0";
 			}
-		}
+
+			if($("#videoP2")[0].src == "https://www.youtube.com/embed/hrSdMXoF9as?rel=0&showinfo=0&autoplay=1") {
+				$("#videoP2")[0].src = "https://www.youtube.com/embed/hrSdMXoF9as?rel=0&showinfo=0&autoplay=0";
+			}
+
+			if($("#videoP3")[0].src == "https://www.youtube.com/embed/CJEJDbeDqbc?rel=0&showinfo=0&autoplay=1") {
+				$("#videoP3")[0].src = "https://www.youtube.com/embed/CJEJDbeDqbc?rel=0&showinfo=0&autoplay=0";
+			}
+
+			if($("#videoP4")[0].src == "https://www.youtube.com/embed/gLdcdF7RZms?rel=0&showinfo=0&autoplay=1") {
+				$("#videoP4")[0].src = "https://www.youtube.com/embed/gLdcdF7RZms?rel=0&showinfo=0&autoplay=0";
+			}
+
+			event.preventDefault();
+		});
+
+		$("#next").click(function(event) {
+			$("#playP1").parent().parent().fadeIn(150);
+			$("#playP2").parent().parent().fadeIn(150);
+			$("#playP3").parent().parent().fadeIn(150);
+			$("#playP4").parent().parent().fadeIn(150);
+
+			if($("#videoP1")[0].src == "https://www.youtube.com/embed/fq6ut-9igBs?rel=0&showinfo=0&autoplay=1") {
+				$("#videoP1")[0].src = "https://www.youtube.com/embed/fq6ut-9igBs?rel=0&showinfo=0&autoplay=0";
+			}
+
+			if($("#videoP2")[0].src == "https://www.youtube.com/embed/hrSdMXoF9as?rel=0&showinfo=0&autoplay=1") {
+				$("#videoP2")[0].src = "https://www.youtube.com/embed/hrSdMXoF9as?rel=0&showinfo=0&autoplay=0";
+			}
+
+			if($("#videoP3")[0].src == "https://www.youtube.com/embed/CJEJDbeDqbc?rel=0&showinfo=0&autoplay=1") {
+				$("#videoP3")[0].src = "https://www.youtube.com/embed/CJEJDbeDqbc?rel=0&showinfo=0&autoplay=0";
+			}
+
+			if($("#videoP4")[0].src == "https://www.youtube.com/embed/gLdcdF7RZms?rel=0&showinfo=0&autoplay=1") {
+				$("#videoP4")[0].src = "https://www.youtube.com/embed/gLdcdF7RZms?rel=0&showinfo=0&autoplay=0";
+			}
+
+			event.preventDefault();
+		});
 
 		$("#playP1").click(function(event) {
 			$(this).parent().parent().fadeOut(150);
 
-			$("#videoP1")[0].src += "&autoplay=1";
+			$("#videoP1")[0].src = "https://www.youtube.com/embed/fq6ut-9igBs?rel=0&showinfo=0&autoplay=1";
 			event.preventDefault();
 		});
 
 		$("#playP2").click(function(event) {
 			$(this).parent().parent().fadeOut(150);
 
-			$("#videoP2")[0].src += "&autoplay=1";
+			$("#videoP2")[0].src = "https://www.youtube.com/embed/hrSdMXoF9as?rel=0&showinfo=0&autoplay=1";
 			event.preventDefault();
 		});
 
 		$("#playP3").click(function(event) {
 			$(this).parent().parent().fadeOut(150);
 
-			$("#videoP3")[0].src += "&autoplay=1";
+			$("#videoP3")[0].src = "https://www.youtube.com/embed/CJEJDbeDqbc?rel=0&showinfo=0&autoplay=1";
 			event.preventDefault();
 		});
 
 		$("#playP4").click(function(event) {
 			$(this).parent().parent().fadeOut(150);
 
-			$("#videoP4")[0].src += "&autoplay=1";
+			$("#videoP4")[0].src = "https://www.youtube.com/embed/gLdcdF7RZms?rel=0&showinfo=0&autoplay=1";
 			event.preventDefault();
+		});
+
+		$("#composition").click(function() {
+			$crew = $("#crew");
+
+			if($crew.hasClass("active")) {
+				$crew.slideUp(250);
+				$crew.removeClass("active");
+			}
+			else {
+				$crew.slideDown(250);
+				$crew.addClass("active");
+			}
 		});
 	});
 }]);
@@ -506,6 +577,272 @@ appCtrl.controller('eventCtrl', ['$scope', '$http', '$state', '$stateParams', fu
 	angular.element(document).ready(function() {});
 }]);
 
+appCtrl.controller('emapCtrl', ['$scope', function($scope) {
+	angular.element(document).ready(function() {
+		var map = L.map('trailMap', {scrollWheelZoom:true}).setView([43.20, 43.63], 8);
+
+		L.tileLayer('https://api.mapbox.com/styles/v1/tamik/cipl12pqa0008dpm316s85ki9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoidGFtaWsiLCJhIjoiY2lwajBpYzRyMDA1M3ZibnQybzdhaXUzMSJ9.nGA_WBvVuRNdB4fNde1sBQ', {
+			attribution: '© <a href="http://mapbox.com">Mapbox</a>',
+			minZoom: 3,
+			maxZoom: 18
+		}).addTo(map);
+
+		var MTBicon = L.icon({
+			iconUrl: '/native/mapControls/MTBtrail.png',
+			iconSize: [64, 64],
+			iconAnchor: [32, 32]
+		});
+
+		var MOTOicon = L.icon({
+			iconUrl: '/native/mapControls/MOTOtrail.png',
+			iconSize: [64, 64],
+			iconAnchor: [32, 32]
+		});
+
+		var ATVicon = L.icon({
+			iconUrl: '/native/mapControls/ATVtrail.png',
+			iconSize: [64, 64],
+			iconAnchor: [32, 32]
+		});
+
+		var bikeparkArmkhi = new L.marker([42.80664800, 44.70481700], {icon: MTBicon});
+		var azauEnduroTrack = new L.marker([43.26601670, 42.48405440], {icon: MOTOicon});
+		var nalchik2gerpegezh = new L.marker([43.46120250, 43.68147440], {icon: ATVicon});
+		var nalchikGarden = new L.marker([43.44898040, 43.63901780], {icon: ATVicon});
+		var nalchikPaidTrack1 = new L.marker([43.43937530, 43.64105580], {icon: ATVicon});
+		var nalchikPaidTrack2 = new L.marker([43.43752180, 43.64441570], {icon: ATVicon});
+		var nalchikPaidTrack3 = new L.marker([43.46882870, 43.65973870], {icon: ATVicon});
+
+		bikeparkArmkhi.on('click', function() {
+			displayModal("bikeparkarmkhi");
+		});
+
+		azauEnduroTrack.on('click', function() {
+			displayModal("azauendurotrack");
+		});
+
+		nalchik2gerpegezh.on('click', function() {
+			displayModal("nalchik2gerpegezh");
+		});
+
+		nalchikGarden.on('click', function() {
+			displayModal("nalchikgarden");
+		});
+
+		nalchikPaidTrack1.on('click', function() {
+			displayModal("nalchikpaidtrack1");
+		});
+
+		nalchikPaidTrack2.on('click', function() {
+			displayModal("nalchikpaidtrack2");
+		});
+
+		nalchikPaidTrack3.on('click', function() {
+			displayModal("nalchikpaidtrack3");
+		});
+
+		var mtb = new L.markerClusterGroup({
+			iconCreateFunction: function(cluster) {
+				return L.divIcon({html: '<img src="/native/mapControls/MTBtrailLoop.png" width="64px" height="64px">'});
+			},
+			showCoverageOnHover: false
+		});
+		var moto = new L.markerClusterGroup({
+			iconCreateFunction: function(cluster) {
+				return L.divIcon({html: '<img src="/native/mapControls/MOTOtrailLoop.png" width="64px" height="64px">'});
+			},
+			showCoverageOnHover: false
+		});
+		var atv = new L.markerClusterGroup({
+			iconCreateFunction: function(cluster) {
+				return L.divIcon({html: '<img src="/native/mapControls/ATVtrailLoop.png" width="64px" height="64px">'});
+			},
+			showCoverageOnHover: false
+		});
+
+		mtb.addLayer(bikeparkArmkhi);
+
+		moto.addLayer(azauEnduroTrack);
+
+		atv.addLayer(nalchik2gerpegezh);
+		atv.addLayer(nalchikGarden);
+		atv.addLayer(nalchikPaidTrack1);
+		atv.addLayer(nalchikPaidTrack2);
+		atv.addLayer(nalchikPaidTrack3);
+
+		map.addLayer(mtb);
+		map.addLayer(moto);
+		map.addLayer(atv);
+
+		$("#trailsCat").change(function() {
+			var category = $("#trailsCat").val();
+
+			switch(category) {
+				case "MTB":
+					map.addLayer(mtb);
+					map.removeLayer(moto);
+					map.removeLayer(atv);
+				break;
+				case "MOTO":
+					map.removeLayer(mtb);
+					map.addLayer(moto);
+					map.removeLayer(atv);
+				break;
+				case "ATV":
+					map.removeLayer(mtb);
+					map.removeLayer(moto);
+					map.addLayer(atv);
+				break;
+				default:
+					mtb.addTo(map);
+					moto.addTo(map);
+					atv.addTo(map);
+				break;
+			}
+		});
+
+		$("#bikeTrail").click(function() {
+			$("#trailsCat option[value=MTB]").attr('selected', 'true');
+			map.addLayer(mtb);
+			map.removeLayer(moto);
+			map.removeLayer(atv);
+		});
+		$("#motoTrail").click(function() {
+			$("#trailsCat option[value=MOTO]").attr('selected', 'true');
+			map.removeLayer(mtb);
+			map.addLayer(moto);
+			map.removeLayer(atv);
+		});
+		$("#atvTrail").click(function() {
+			$("#trailsCat option[value=ATV]").attr('selected', 'true');
+			map.removeLayer(mtb);
+			map.removeLayer(moto);
+			map.addLayer(atv);
+		});
+
+		function displayModal(value) {
+			$modal = $(".modalComponent");
+			$modalView = $(".viewComponent");
+
+			$.ajax({
+				url: '/data/trailsInfo/' + value + ".html",
+				type: "GET",
+				success: function(data) {
+					$modalView.html(data);
+				}
+			});
+
+			$modal.css({"display":"table"});
+
+			$modal.animate({"opacity": 1}, 250);
+			$modalView.animate({"opacity": 1}, 500);
+
+			$modalView.html(value);
+		}
+	});
+}]);
+
+appCtrl.controller('videoCtrl', ['$scope', function($scope) {
+	angular.element(document).ready(function() {
+		$(".slider").touchSlider({
+			roll: true,
+			flexible: true,
+			page: 2,
+			btn_prev: $("#prev"),
+			btn_next: $("#next"),
+			sidePage: true
+		});
+
+		$("#prev").click(function(event) {
+			$("#playP1").parent().parent().fadeIn(150);
+			$("#playP2").parent().parent().fadeIn(150);
+			$("#playP3").parent().parent().fadeIn(150);
+			$("#playP4").parent().parent().fadeIn(150);
+
+			if($("#videoP1")[0].src == "https://www.youtube.com/embed/fq6ut-9igBs?rel=0&showinfo=0&autoplay=1") {
+				$("#videoP1")[0].src = "https://www.youtube.com/embed/fq6ut-9igBs?rel=0&showinfo=0&autoplay=0";
+			}
+
+			if($("#videoP2")[0].src == "https://www.youtube.com/embed/hrSdMXoF9as?rel=0&showinfo=0&autoplay=1") {
+				$("#videoP2")[0].src = "https://www.youtube.com/embed/hrSdMXoF9as?rel=0&showinfo=0&autoplay=0";
+			}
+
+			if($("#videoP3")[0].src == "https://www.youtube.com/embed/CJEJDbeDqbc?rel=0&showinfo=0&autoplay=1") {
+				$("#videoP3")[0].src = "https://www.youtube.com/embed/CJEJDbeDqbc?rel=0&showinfo=0&autoplay=0";
+			}
+
+			if($("#videoP4")[0].src == "https://www.youtube.com/embed/gLdcdF7RZms?rel=0&showinfo=0&autoplay=1") {
+				$("#videoP4")[0].src = "https://www.youtube.com/embed/gLdcdF7RZms?rel=0&showinfo=0&autoplay=0";
+			}
+
+			event.preventDefault();
+		});
+
+		$("#next").click(function(event) {
+			$("#playP1").parent().parent().fadeIn(150);
+			$("#playP2").parent().parent().fadeIn(150);
+			$("#playP3").parent().parent().fadeIn(150);
+			$("#playP4").parent().parent().fadeIn(150);
+
+			if($("#videoP1")[0].src == "https://www.youtube.com/embed/fq6ut-9igBs?rel=0&showinfo=0&autoplay=1") {
+				$("#videoP1")[0].src = "https://www.youtube.com/embed/fq6ut-9igBs?rel=0&showinfo=0&autoplay=0";
+			}
+
+			if($("#videoP2")[0].src == "https://www.youtube.com/embed/hrSdMXoF9as?rel=0&showinfo=0&autoplay=1") {
+				$("#videoP2")[0].src = "https://www.youtube.com/embed/hrSdMXoF9as?rel=0&showinfo=0&autoplay=0";
+			}
+
+			if($("#videoP3")[0].src == "https://www.youtube.com/embed/CJEJDbeDqbc?rel=0&showinfo=0&autoplay=1") {
+				$("#videoP3")[0].src = "https://www.youtube.com/embed/CJEJDbeDqbc?rel=0&showinfo=0&autoplay=0";
+			}
+
+			if($("#videoP4")[0].src == "https://www.youtube.com/embed/gLdcdF7RZms?rel=0&showinfo=0&autoplay=1") {
+				$("#videoP4")[0].src = "https://www.youtube.com/embed/gLdcdF7RZms?rel=0&showinfo=0&autoplay=0";
+			}
+
+			event.preventDefault();
+		});
+
+		$("#playP1").click(function(event) {
+			$(this).parent().parent().fadeOut(150);
+
+			$("#videoP1")[0].src = "https://www.youtube.com/embed/fq6ut-9igBs?rel=0&showinfo=0&autoplay=1";
+			event.preventDefault();
+		});
+
+		$("#playP2").click(function(event) {
+			$(this).parent().parent().fadeOut(150);
+
+			$("#videoP2")[0].src = "https://www.youtube.com/embed/hrSdMXoF9as?rel=0&showinfo=0&autoplay=1";
+			event.preventDefault();
+		});
+
+		$("#playP3").click(function(event) {
+			$(this).parent().parent().fadeOut(150);
+
+			$("#videoP3")[0].src = "https://www.youtube.com/embed/CJEJDbeDqbc?rel=0&showinfo=0&autoplay=1";
+			event.preventDefault();
+		});
+
+		$("#playP4").click(function(event) {
+			$(this).parent().parent().fadeOut(150);
+
+			$("#videoP4")[0].src = "https://www.youtube.com/embed/gLdcdF7RZms?rel=0&showinfo=0&autoplay=1";
+			event.preventDefault();
+		});
+	});
+}]);
+
+appCtrl.controller('crewCtrl', ['$scope', '$http', function($scope, $http) {
+	$http.get('/data/crew.json').success(function(data) {
+		$scope.crew = data;
+	});
+}]);
+
+appCtrl.controller('contacts', ['$scope', function($scope) {
+	angular.element(document).ready(function() {});
+}]);
+
 appCtrl.controller('locationCtrl', ['$scope', function($scope) {
 	angular.element(document).ready(function() {
 		$("#locationMap").css({"width":$(window).width(), "height":$(window).height()});
@@ -527,10 +864,10 @@ appCtrl.controller('locationCtrl', ['$scope', function($scope) {
 		var locationPeople = omnivore.kml('/data/location/locationPeople.kml').addTo(locationMap);
 		var locationPeopleMarket = omnivore.kml('/data/location/locationPeopleMarket.kml').addTo(locationMap);
 
-		locationAuto.options.color = '#b00';
-		locationAuto.options.weight = 7;
+		locationAuto.options.color = '#2b2';
+		locationAuto.options.weight = 5;
 
-		locationPeople.options.color = '#2b2';
+		locationPeople.options.color = '#b00';
 		locationPeople.options.weight = 5;
 
 		locationPeopleMarket.options.color = '#22b';

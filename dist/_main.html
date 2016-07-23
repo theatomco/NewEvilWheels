@@ -3,31 +3,21 @@
 		<div class="viewComponent"></div>
 	</div>
 </div>
-<div class="debugMenu">
-	<h2>DEBUG <span id="debugClose">x</span></h2>
-	<button class="primary" id="debugBG">Default BG</button>
-	<button class="primary" id="debugMenu">Toogle Menu</button>
-</div>
 <section class="start" id="start">
 	<div class="background" id="mainBackground"></div>
 	<nav class="social">
 		<a href="http://vk.com/evil_wheels" target="_blank">
 			<div class="icon vk"></div>
 		</a>
-		<a href="http://instagram.com/evil_wheels" target="_blank">
+		<a href="http://youtube.com/channel/UCH1Onfk5Uzy8KLwdC_tXavg" target="_blank">
 			<div class="icon yt"></div>
 		</a>
-		<a href="http://youtube.com/channel/UCH1Onfk5Uzy8KLwdC_tXavg" target="_blank">
+		<a href="http://instagram.com/evil_wheels" target="_blank">
 			<div class="icon in"></div>
 		</a>
 	</nav>
 	<div class="windowContainer">
 		<div class="logo inverted"></div>
-		<nav class="onsite">
-			<a href="#crew">Состав</a>
-			<a href="#evets">Мероприятия</a>
-			<a href="#contacts">Контакты</a>
-		</nav>
 	</div>
 	<div class="scrollContainer">
 		<div class="scrollElement">
@@ -39,41 +29,46 @@
 	<div class="transition"></div>
 	<div class="aboutMessage">
 		<h2>Мы команда Evil Wheels</h2>
-		<p>Команда основана тремя энтузиастами, увлеченными велоспортом в 2012 году. Первоначальным приоритетом команды являлось развитие дисциплины даунхилл в велоспорте. Но за несколько лет наша команда стала более дружной и пополнилась новыми людьми, которые помогают нам развивать все экстремальные виды спорта и продвигать их в обществе!</p>
+		<p>Команда основана тремя энтузиастами, увлеченными велоспортом, в 2012 году. Первоначальным приоритетом команды являлось развитие дисциплины скоростного спуска в велоспорте. Но за несколько лет наша команда стала более дружной и пополнилась новыми людьми, которые помогают нам развивать все экстремальные виды спорта и продвигать их в обществе!</p>
+	</div>
+</section>
+<section class="sideprojects" id="sideprojects">
+	<div class="project">
+		<div class="background" style="background-image: url(/native/side/atvrent.jpg);"></div>
+		<div class="container">
+			<h2 class="title">Прокат квадроциклов</h2>
+			<p class="description">Хочешь увидеть новые места?</p>
+			<a href="http://vk.com/evil_wheels_experts" class="button inverted" target="_blank">Подробнее</a>
+		</div>
+	</div>
+	<div class="project">
+		<div class="background" style="background-image: url(/native/side/motoschool.jpg);"></div>
+		<div class="container">
+			<h2 class="title">Мотошкола</h2>
+			<p class="description">Хочешь кататься на мотоцикле?</p>
+			<a href="http://vk.com/evil_wheels_experts" class="button inverted" target="_blank">Подробнее</a>
+		</div>
+	</div>
+	<div class="project">
+		<div class="background" style="background-image: url(/native/side/airpad.jpg);"></div>
+		<div class="container">
+			<h2 class="title">Аэроподушка</h2>
+			<p class="description">Хочешь научиться делать трюки?</p>
+			<a href="http://vk.com/air_pad" class="button inverted" target="_blank">Подробнее</a>
+		</div>
 	</div>
 </section>
 <div class="btw">
-	<h2>Состав<small>Собранный нами</small></h2>
-</div>
-<section class="crew" id="crew">
-	<div class="person" ng-repeat="person in crew">
-		<div class="photo" style="background-image: url({{person.photo}});"></div>
-		<a href="{{person.link}}" target="_blank">
-			<div class="info">
-				<span class="name">{{person.name}}</span>
-				<span class="position">{{person.position}}</span>
-			</div>
-		</a>
-	</div>
-	<div class="person">
-		<div class="photo" style="background-color: transparent; background-image: url(/native/close.png); transform: rotate(45deg);"></div>
-		<a href="#contacts">
-			<div class="info">
-				<span class="name">Присоединяйся!</span>
-			</div>
-		</a>
-	</div>
-</section>
-<div class="btw">
-	<h2>Трассы<span class="small">beta</span><small>Созданные нами</small></h2>
+	<h2>Трассы<span class="small">beta</span></h2>
 	<div class="controls" id="mapControls">
 		<div class="select">
 			<select id="trailsCat">
-				<option value="ALL">ALL</option>
-				<option value="MTB">MTB</option>
-				<option value="MOTO">MOTO</option>
-				<option value="ATV">ATV</option>
-			</select></div>
+				<option value="ALL">ВСЕ</option>
+				<option value="MTB">ВЕЛО</option>
+				<option value="MOTO">МОТО</option>
+				<option value="ATV">КВАДРО</option>
+			</select>
+		</div>
 	</div>
 </div>
 <section class="map" id="map">
@@ -83,15 +78,15 @@
 	<div class="mapLegend">
 		<div class="item" id="bikeTrail">
 			<span class="icon map mtb"></span>
-			<p>Велотрасса</p>
+			<p>Вело</p>
 		</div>
 		<div class="item" id="motoTrail">
 			<span class="icon map moto"></span>
-			<p>Мототрасса</p>
+			<p>Мото</p>
 		</div>
 		<div class="item" id="atvTrail">
 			<span class="icon map atv"></span>
-			<p>Квадротрасса</p>
+			<p>Квадро</p>
 		</div>
 		<br>
 		<div class="item" style="width: 120px;">
@@ -111,38 +106,12 @@
 		</div>
 		<div class="item" style="width: 160px;">
 			<span class="line black"></span>
-			<p>Экстримальная</p>
-		</div>
-	</div>
-</section>
-<section class="sideprojects" id="sideprojects">
-	<div class="project">
-		<div class="background" style="background-image: url(/native/side/motoschool.jpg);"></div>
-		<div class="container">
-			<h2 class="title">Мотошкола</h2>
-			<p class="description">Хочешь кататься на мотоцикле?</p>
-			<a href="http://vk.com/evil_wheels_experts" class="button inverted" target="_blank">Подробнее</a>
-		</div>
-	</div>
-	<div class="project">
-		<div class="background" style="background-image: url(/native/side/airpad.jpg);"></div>
-		<div class="container">
-			<h2 class="title">Аэроподушка</h2>
-			<p class="description">Хочешь научиться делать трюки?</p>
-			<a href="http://vk.com/air_pad" class="button inverted" target="_blank">Подробнее</a>
-		</div>
-	</div>
-	<div class="project">
-		<div class="background" style="background-image: url(/native/side/atvrent.jpg);"></div>
-		<div class="container">
-			<h2 class="title">Прокат квадроциклов</h2>
-			<p class="description">Хочешь увидеть новые места?</p>
-			<a href="http://vk.com/evil_wheels_experts" class="button inverted" target="_blank">Подробнее</a>
+			<p>Экстремальная</p>
 		</div>
 	</div>
 </section>
 <div class="btw">
-	<h2>Видео<small>Сделанные нами</small></h2>
+	<h2>Видео</h2>
 </div>
 <section class="videos" id="videos">
 	<div class="wrapper">
@@ -151,7 +120,8 @@
 				<li>
 					<div class="thumb" style="background-image: url(/data/videoThumbs/9may.png);">
 						<div class="content">
-							<h2><small>Велопробег</small>9 мая</h2>
+							<span>9 мая 2016</span>
+							<h2><small>Велопробег</small>«Дорогами войны»</h2>
 							<button type="button" class="inverted" id="playP1">Смотреть видео</button>
 						</div>
 					</div>
@@ -160,6 +130,7 @@
 				<li>
 					<div class="thumb" style="background-image: url(/data/videoThumbs/smoto2016.png);">
 						<div class="content">
+							<span>23 апреля 2016</span>
 							<h2><small>Социальная акция</small>«Мир мотокросса»</h2>
 							<button type="button" class="inverted" id="playP2">Смотреть видео</button>
 						</div>
@@ -169,6 +140,7 @@
 				<li>
 					<div class="thumb" style="background-image: url(/data/videoThumbs/enduro.png);">
 						<div class="content">
+							<span>15 февраля 2016</span>
 							<h2>Эндуро<small>в горах</small></h2>
 							<button type="button" class="inverted" id="playP3">Смотреть видео</button>
 						</div>
@@ -178,6 +150,7 @@
 				<li>
 					<div class="thumb" style="background-image: url(/data/videoThumbs/armkhi.png);">
 						<div class="content">
+							<span>27 апреля 2016</span>
 							<h2><small>Строим в</small>Армхи</h2>
 							<button type="button" class="inverted" id="playP4">Смотреть видео</button>
 						</div>
@@ -193,16 +166,16 @@
 	</div>
 </section>
 <div class="btw">
-	<h2>Мероприятия <span>2014&ndash;2016</span><small>Организованные нами</small></h2>
+	<h2>Мероприятия <span>2014&ndash;2016</span></h2>
 </div>
 <section class="events" id="events">
 	<div class="event" ng-repeat="event in events | orderBy:'-id'">
 		<div class="background" style="background-image: url({{event.image}});"></div>
 		<div class="info">
 			<span class="date">{{event.date}}</span>
-			<h2 class="title">{{event.title}}</h2>
+			<h2 class="title">{{event.title}}<small ng-if="event.announce">АНОНС</small></h2>
 			<p class="description">{{event.description}}</p>
-			<a href="/events/{{event.link}}" class="button" title="Подробнее о мероприятии {{event.title}}">Подробнее</a>
+			<a href="/events/{{event.link}}" class="button" title="Подробнее о мероприятии {{event.title}}" ng-if="!event.announce">Подробнее</a>
 		</div>
 	</div>
 </section>
@@ -218,23 +191,45 @@
 			<a href="http://vk.com/evil_wheels" target="_blank">
 				<div class="icon vk"></div>
 			</a>
-			<a href="http://instagram.com/evil_wheels" target="_blank">
+			<a href="http://youtube.com/channel/UCH1Onfk5Uzy8KLwdC_tXavg" target="_blank">
 				<div class="icon yt"></div>
 			</a>
-			<a href="http://youtube.com/channel/UCH1Onfk5Uzy8KLwdC_tXavg" target="_blank">
+			<a href="http://instagram.com/evil_wheels" target="_blank">
 				<div class="icon in"></div>
 			</a>
 		</div>
 	</div>
 </section>
+<div class="btw clickable" id="composition">
+	<h2>Состав</h2>
+</div>
+<section class="crew" id="crew">
+	<div class="person" ng-repeat="person in crew">
+		<div class="photo" style="background-image: url({{person.photo || '/native/nophoto.png'}});"></div>
+		<a href="{{person.link}}" target="_blank">
+			<div class="info">
+				<span class="name">{{person.name}}</span>
+				<span class="position">{{person.position}}</span>
+			</div>
+		</a>
+	</div>
+	<div class="person" style="display: none;">
+		<div class="photo" style="background-color: transparent; background-image: url(/native/close.png); transform: rotate(45deg);"></div>
+		<a href="#contacts">
+			<div class="info">
+				<span class="name">Присоединяйся!</span>
+			</div>
+		</a>
+	</div>
+</section>
 <div class="btw">
-	<h2>Контакты<small>Для связи с нами</small></h2>
+	<h2>Контакты</h2>
 </div>
 <section class="contacts" id="contacts">
 	<div class="person">
-		<h3>По вопросам мотошколы:</h3>
+		<h3>Прокат / Мотошкола:</h3>
 		<a href="tel:+79887276959">
-			<div class="photo" style="background-image: url(/data/crewPhoto/zhdanov.jpg);"></div>
+			<div class="photo" style="background-image: url(/data/crewPhoto/zhdanov.png);"></div>
 			<div class="inc">
 				<span class="number">+7 (988) 727-69-59</span>
 				<span class="name">Станислав</span>
@@ -242,9 +237,9 @@
 		</a>
 	</div>
 	<div class="person">
-		<h3>По вопросам сотрудничества:</h3>
+		<h3>Сотрудничество:</h3>
 		<a href="tel:+79889300569">
-			<div class="photo" style="background-image: url(/data/crewPhoto/vekshin.jpg);"></div>
+			<div class="photo" style="background-image: url(/data/crewPhoto/vekshin.png);"></div>
 			<div class="inc">
 				<span class="number">+7 (988) 930-05-69</span>
 				<span class="name">Виталий</span>
