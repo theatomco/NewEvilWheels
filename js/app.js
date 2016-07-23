@@ -8,7 +8,7 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
 			url: '/',
 			templateUrl: '/dist/_main.html',
 			pageTitle: 'Команда Evil Wheels',
-			controller: 'homeCtrl'
+			controller: 'mainCtrl'
 		})
 		.state('events', {
 			url: '/events',
@@ -26,7 +26,7 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
 			url: '/map',
 			templateUrl: '/dist/_map.html',
 			pageTitle: 'Трассы Evil Wheels',
-			controller: 'emapCtrl'
+			controller: 'mapCtrl'
 		})
 		.state('video', {
 			url: '/video',
@@ -43,8 +43,7 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
 		.state('contacts', {
 			url: '/contacts',
 			templateUrl: '/dist/_contacts.html',
-			pageTitle: 'Контакты Evil Wheels',
-			controller: 'contactsCtrl'
+			pageTitle: 'Контакты Evil Wheels'
 		})
 		.state('location', {
 			url: '/location',
@@ -57,15 +56,7 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
 
 var appCtrl = angular.module('appCtrl', []);
 
-appCtrl.controller('homeCtrl', ['$scope', '$http', function($scope, $http) {
-	$http.get('/data/crew.json').success(function(data) {
-		$scope.crew = data;
-	});
-
-	$http.get('/data/events.json').success(function(data) {
-		$scope.events = data;
-	});
-
+appCtrl.controller('mainCtrl', ['$scope', '$http', function($scope, $http) {
 	angular.element(document).ready(function() {
 		var backgrounds = ["/data/eventsCover/funnybunny.jpg", "/data/eventsCover/funnybunnyvol2.jpg", "/data/eventsCover/smoto2015.jpg", "/data/eventsCover/smoto2016.jpg", "/native/landing.jpg"];
 
@@ -75,15 +66,23 @@ appCtrl.controller('homeCtrl', ['$scope', '$http', function($scope, $http) {
 
 		$(".start").css({"height":$(window).height()});
 
-		$(".slider").touchSlider({
-			roll: true,
-			flexible: true,
-			page: 2,
-			btn_prev: $("#prev"),
-			btn_next: $("#next"),
-			sidePage: true
-		});
+		$("#composition").click(function() {
+			$crew = $("#crew");
 
+			if($crew.hasClass("active")) {
+				$crew.slideUp(250);
+				$crew.removeClass("active");
+			}
+			else {
+				$crew.slideDown(250);
+				$crew.addClass("active");
+			}
+		});
+	});
+}]);
+
+appCtrl.controller('mapCtrl', ['$scope', function($scope) {
+	angular.element(document).ready(function() {
 		var map = L.map('trailMap', {scrollWheelZoom:false}).setView([43.20, 43.63], 8); // 43.50 43.63 13 // 43.20 43.63 8
 
 		L.tileLayer('https://api.mapbox.com/styles/v1/tamik/cipl12pqa0008dpm316s85ki9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoidGFtaWsiLCJhIjoiY2lwajBpYzRyMDA1M3ZibnQybzdhaXUzMSJ9.nGA_WBvVuRNdB4fNde1sBQ', {
@@ -148,10 +147,6 @@ appCtrl.controller('homeCtrl', ['$scope', '$http', function($scope, $http) {
 			displayModal("nalchikpaidtrack3");
 		});
 
-		// var mtb = new L.layerGroup([bikeparkArmkhi]);
-		// var moto = new L.layerGroup([azauEnduroTrack]);
-		// var atv = new L.layerGroup([nalchik2gerpegezh, nalchikGarden, nalchikPaidTrack1, nalchikPaidTrack2, nalchikPaidTrack3]);
-
 		var mtb = new L.markerClusterGroup({
 			iconCreateFunction: function(cluster) {
 				return L.divIcon({html: '<img src="/native/mapControls/MTBtrailLoop.png" width="64px" height="64px">'});
@@ -180,10 +175,6 @@ appCtrl.controller('homeCtrl', ['$scope', '$http', function($scope, $http) {
 		atv.addLayer(nalchikPaidTrack1);
 		atv.addLayer(nalchikPaidTrack2);
 		atv.addLayer(nalchikPaidTrack3);
-
-		// atv.on('click', function() {
-		// 	alert(atv.getLatLng());
-		// });
 
 		map.addLayer(mtb);
 		map.addLayer(moto);
@@ -222,12 +213,14 @@ appCtrl.controller('homeCtrl', ['$scope', '$http', function($scope, $http) {
 			map.removeLayer(moto);
 			map.removeLayer(atv);
 		});
+
 		$("#motoTrail").click(function() {
 			$("#trailsCat option[value=MOTO]").attr('selected', 'true');
 			map.removeLayer(mtb);
 			map.addLayer(moto);
 			map.removeLayer(atv);
 		});
+
 		$("#atvTrail").click(function() {
 			$("#trailsCat option[value=ATV]").attr('selected', 'true');
 			map.removeLayer(mtb);
@@ -254,6 +247,19 @@ appCtrl.controller('homeCtrl', ['$scope', '$http', function($scope, $http) {
 
 			$modalView.html(value);
 		}
+	});
+}]);
+
+appCtrl.controller('videoCtrl', ['$scope', function($scope) {
+	angular.element(document).ready(function() {
+		$(".slider").touchSlider({
+			roll: true,
+			flexible: true,
+			page: 2,
+			btn_prev: $("#prev"),
+			btn_next: $("#next"),
+			sidePage: true
+		});
 
 		$("#prev").click(function(event) {
 			$("#playP1").parent().parent().fadeIn(150);
@@ -332,26 +338,18 @@ appCtrl.controller('homeCtrl', ['$scope', '$http', function($scope, $http) {
 			$("#videoP4")[0].src = "https://www.youtube.com/embed/gLdcdF7RZms?rel=0&showinfo=0&autoplay=1";
 			event.preventDefault();
 		});
-
-		$("#composition").click(function() {
-			$crew = $("#crew");
-
-			if($crew.hasClass("active")) {
-				$crew.slideUp(250);
-				$crew.removeClass("active");
-			}
-			else {
-				$crew.slideDown(250);
-				$crew.addClass("active");
-			}
-		});
 	});
 }]);
 
-appCtrl.controller('eventsCtrl', ['$scope', '$http', function($scope, $http) {
-	$http.get('/data/events.json').success(function(data) {
-		$scope.events = data;
-	});
+appCtrl.controller('eventsCtrl', ['$scope', '$http', 'eventsCache', function($scope, $http, eventsCache) {
+	$scope.events = eventsCache.get('data');
+
+	if(!$scope.events) {
+		$http.get('/data/events.json').success(function(data) {
+			eventsCache.put('data', data);
+			$scope.events = data;
+		});
+	}
 }]);
 
 appCtrl.controller('eventCtrl', ['$scope', '$http', '$state', '$stateParams', function($scope, $http, $state, $stateParams) {
@@ -573,274 +571,17 @@ appCtrl.controller('eventCtrl', ['$scope', '$http', '$state', '$stateParams', fu
 			}
 		});
 	});
-
-	angular.element(document).ready(function() {});
 }]);
 
-appCtrl.controller('emapCtrl', ['$scope', function($scope) {
-	angular.element(document).ready(function() {
-		var map = L.map('trailMap', {scrollWheelZoom:true}).setView([43.20, 43.63], 8);
+appCtrl.controller('crewCtrl', ['$scope', '$http', 'crewCache', function($scope, $http, crewCache) {
+	$scope.crew = crewCache.get('data');
 
-		L.tileLayer('https://api.mapbox.com/styles/v1/tamik/cipl12pqa0008dpm316s85ki9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoidGFtaWsiLCJhIjoiY2lwajBpYzRyMDA1M3ZibnQybzdhaXUzMSJ9.nGA_WBvVuRNdB4fNde1sBQ', {
-			attribution: '© <a href="http://mapbox.com">Mapbox</a>',
-			minZoom: 3,
-			maxZoom: 18
-		}).addTo(map);
-
-		var MTBicon = L.icon({
-			iconUrl: '/native/mapControls/MTBtrail.png',
-			iconSize: [64, 64],
-			iconAnchor: [32, 32]
+	if(!$scope.crew) {
+		$http.get('/data/crew.json').success(function(data) {
+			crewCache.put('data', data);
+			$scope.crew = data;
 		});
-
-		var MOTOicon = L.icon({
-			iconUrl: '/native/mapControls/MOTOtrail.png',
-			iconSize: [64, 64],
-			iconAnchor: [32, 32]
-		});
-
-		var ATVicon = L.icon({
-			iconUrl: '/native/mapControls/ATVtrail.png',
-			iconSize: [64, 64],
-			iconAnchor: [32, 32]
-		});
-
-		var bikeparkArmkhi = new L.marker([42.80664800, 44.70481700], {icon: MTBicon});
-		var azauEnduroTrack = new L.marker([43.26601670, 42.48405440], {icon: MOTOicon});
-		var nalchik2gerpegezh = new L.marker([43.46120250, 43.68147440], {icon: ATVicon});
-		var nalchikGarden = new L.marker([43.44898040, 43.63901780], {icon: ATVicon});
-		var nalchikPaidTrack1 = new L.marker([43.43937530, 43.64105580], {icon: ATVicon});
-		var nalchikPaidTrack2 = new L.marker([43.43752180, 43.64441570], {icon: ATVicon});
-		var nalchikPaidTrack3 = new L.marker([43.46882870, 43.65973870], {icon: ATVicon});
-
-		bikeparkArmkhi.on('click', function() {
-			displayModal("bikeparkarmkhi");
-		});
-
-		azauEnduroTrack.on('click', function() {
-			displayModal("azauendurotrack");
-		});
-
-		nalchik2gerpegezh.on('click', function() {
-			displayModal("nalchik2gerpegezh");
-		});
-
-		nalchikGarden.on('click', function() {
-			displayModal("nalchikgarden");
-		});
-
-		nalchikPaidTrack1.on('click', function() {
-			displayModal("nalchikpaidtrack1");
-		});
-
-		nalchikPaidTrack2.on('click', function() {
-			displayModal("nalchikpaidtrack2");
-		});
-
-		nalchikPaidTrack3.on('click', function() {
-			displayModal("nalchikpaidtrack3");
-		});
-
-		var mtb = new L.markerClusterGroup({
-			iconCreateFunction: function(cluster) {
-				return L.divIcon({html: '<img src="/native/mapControls/MTBtrailLoop.png" width="64px" height="64px">'});
-			},
-			showCoverageOnHover: false
-		});
-		var moto = new L.markerClusterGroup({
-			iconCreateFunction: function(cluster) {
-				return L.divIcon({html: '<img src="/native/mapControls/MOTOtrailLoop.png" width="64px" height="64px">'});
-			},
-			showCoverageOnHover: false
-		});
-		var atv = new L.markerClusterGroup({
-			iconCreateFunction: function(cluster) {
-				return L.divIcon({html: '<img src="/native/mapControls/ATVtrailLoop.png" width="64px" height="64px">'});
-			},
-			showCoverageOnHover: false
-		});
-
-		mtb.addLayer(bikeparkArmkhi);
-
-		moto.addLayer(azauEnduroTrack);
-
-		atv.addLayer(nalchik2gerpegezh);
-		atv.addLayer(nalchikGarden);
-		atv.addLayer(nalchikPaidTrack1);
-		atv.addLayer(nalchikPaidTrack2);
-		atv.addLayer(nalchikPaidTrack3);
-
-		map.addLayer(mtb);
-		map.addLayer(moto);
-		map.addLayer(atv);
-
-		$("#trailsCat").change(function() {
-			var category = $("#trailsCat").val();
-
-			switch(category) {
-				case "MTB":
-					map.addLayer(mtb);
-					map.removeLayer(moto);
-					map.removeLayer(atv);
-				break;
-				case "MOTO":
-					map.removeLayer(mtb);
-					map.addLayer(moto);
-					map.removeLayer(atv);
-				break;
-				case "ATV":
-					map.removeLayer(mtb);
-					map.removeLayer(moto);
-					map.addLayer(atv);
-				break;
-				default:
-					mtb.addTo(map);
-					moto.addTo(map);
-					atv.addTo(map);
-				break;
-			}
-		});
-
-		$("#bikeTrail").click(function() {
-			$("#trailsCat option[value=MTB]").attr('selected', 'true');
-			map.addLayer(mtb);
-			map.removeLayer(moto);
-			map.removeLayer(atv);
-		});
-		$("#motoTrail").click(function() {
-			$("#trailsCat option[value=MOTO]").attr('selected', 'true');
-			map.removeLayer(mtb);
-			map.addLayer(moto);
-			map.removeLayer(atv);
-		});
-		$("#atvTrail").click(function() {
-			$("#trailsCat option[value=ATV]").attr('selected', 'true');
-			map.removeLayer(mtb);
-			map.removeLayer(moto);
-			map.addLayer(atv);
-		});
-
-		function displayModal(value) {
-			$modal = $(".modalComponent");
-			$modalView = $(".viewComponent");
-
-			$.ajax({
-				url: '/data/trailsInfo/' + value + ".html",
-				type: "GET",
-				success: function(data) {
-					$modalView.html(data);
-				}
-			});
-
-			$modal.css({"display":"table"});
-
-			$modal.animate({"opacity": 1}, 250);
-			$modalView.animate({"opacity": 1}, 500);
-
-			$modalView.html(value);
-		}
-	});
-}]);
-
-appCtrl.controller('videoCtrl', ['$scope', function($scope) {
-	angular.element(document).ready(function() {
-		$(".slider").touchSlider({
-			roll: true,
-			flexible: true,
-			page: 2,
-			btn_prev: $("#prev"),
-			btn_next: $("#next"),
-			sidePage: true
-		});
-
-		$("#prev").click(function(event) {
-			$("#playP1").parent().parent().fadeIn(150);
-			$("#playP2").parent().parent().fadeIn(150);
-			$("#playP3").parent().parent().fadeIn(150);
-			$("#playP4").parent().parent().fadeIn(150);
-
-			if($("#videoP1")[0].src == "https://www.youtube.com/embed/fq6ut-9igBs?rel=0&showinfo=0&autoplay=1") {
-				$("#videoP1")[0].src = "https://www.youtube.com/embed/fq6ut-9igBs?rel=0&showinfo=0&autoplay=0";
-			}
-
-			if($("#videoP2")[0].src == "https://www.youtube.com/embed/hrSdMXoF9as?rel=0&showinfo=0&autoplay=1") {
-				$("#videoP2")[0].src = "https://www.youtube.com/embed/hrSdMXoF9as?rel=0&showinfo=0&autoplay=0";
-			}
-
-			if($("#videoP3")[0].src == "https://www.youtube.com/embed/CJEJDbeDqbc?rel=0&showinfo=0&autoplay=1") {
-				$("#videoP3")[0].src = "https://www.youtube.com/embed/CJEJDbeDqbc?rel=0&showinfo=0&autoplay=0";
-			}
-
-			if($("#videoP4")[0].src == "https://www.youtube.com/embed/gLdcdF7RZms?rel=0&showinfo=0&autoplay=1") {
-				$("#videoP4")[0].src = "https://www.youtube.com/embed/gLdcdF7RZms?rel=0&showinfo=0&autoplay=0";
-			}
-
-			event.preventDefault();
-		});
-
-		$("#next").click(function(event) {
-			$("#playP1").parent().parent().fadeIn(150);
-			$("#playP2").parent().parent().fadeIn(150);
-			$("#playP3").parent().parent().fadeIn(150);
-			$("#playP4").parent().parent().fadeIn(150);
-
-			if($("#videoP1")[0].src == "https://www.youtube.com/embed/fq6ut-9igBs?rel=0&showinfo=0&autoplay=1") {
-				$("#videoP1")[0].src = "https://www.youtube.com/embed/fq6ut-9igBs?rel=0&showinfo=0&autoplay=0";
-			}
-
-			if($("#videoP2")[0].src == "https://www.youtube.com/embed/hrSdMXoF9as?rel=0&showinfo=0&autoplay=1") {
-				$("#videoP2")[0].src = "https://www.youtube.com/embed/hrSdMXoF9as?rel=0&showinfo=0&autoplay=0";
-			}
-
-			if($("#videoP3")[0].src == "https://www.youtube.com/embed/CJEJDbeDqbc?rel=0&showinfo=0&autoplay=1") {
-				$("#videoP3")[0].src = "https://www.youtube.com/embed/CJEJDbeDqbc?rel=0&showinfo=0&autoplay=0";
-			}
-
-			if($("#videoP4")[0].src == "https://www.youtube.com/embed/gLdcdF7RZms?rel=0&showinfo=0&autoplay=1") {
-				$("#videoP4")[0].src = "https://www.youtube.com/embed/gLdcdF7RZms?rel=0&showinfo=0&autoplay=0";
-			}
-
-			event.preventDefault();
-		});
-
-		$("#playP1").click(function(event) {
-			$(this).parent().parent().fadeOut(150);
-
-			$("#videoP1")[0].src = "https://www.youtube.com/embed/fq6ut-9igBs?rel=0&showinfo=0&autoplay=1";
-			event.preventDefault();
-		});
-
-		$("#playP2").click(function(event) {
-			$(this).parent().parent().fadeOut(150);
-
-			$("#videoP2")[0].src = "https://www.youtube.com/embed/hrSdMXoF9as?rel=0&showinfo=0&autoplay=1";
-			event.preventDefault();
-		});
-
-		$("#playP3").click(function(event) {
-			$(this).parent().parent().fadeOut(150);
-
-			$("#videoP3")[0].src = "https://www.youtube.com/embed/CJEJDbeDqbc?rel=0&showinfo=0&autoplay=1";
-			event.preventDefault();
-		});
-
-		$("#playP4").click(function(event) {
-			$(this).parent().parent().fadeOut(150);
-
-			$("#videoP4")[0].src = "https://www.youtube.com/embed/gLdcdF7RZms?rel=0&showinfo=0&autoplay=1";
-			event.preventDefault();
-		});
-	});
-}]);
-
-appCtrl.controller('crewCtrl', ['$scope', '$http', function($scope, $http) {
-	$http.get('/data/crew.json').success(function(data) {
-		$scope.crew = data;
-	});
-}]);
-
-appCtrl.controller('contacts', ['$scope', function($scope) {
-	angular.element(document).ready(function() {});
+	}
 }]);
 
 appCtrl.controller('locationCtrl', ['$scope', function($scope) {
@@ -875,83 +616,12 @@ appCtrl.controller('locationCtrl', ['$scope', function($scope) {
 	});
 }]);
 
-// appCtrl.controller('appCtrl', ['$scope', function($scope) {}]);
-// appCtrl.controller('aboutCtrl', ['$scope', '$http', 'aboutCache', function($scope, $http, aboutCache) {
-// appCtrl.controller('aboutCtrl', ['$scope', '$http', 'appCache', function($scope, $http, appCache) {
-// 	// $scope.about = aboutCache.get('info');
-// 	// $scope.skills = aboutCache.get('skills');
-// 	// $scope.works = aboutCache.get('works');
-//
-// 	$scope.about = appCache.get('info');
-// 	$scope.skills = appCache.get('skills');
-// 	$scope.works = appCache.get('works');
-//
-// 	if(!$scope.about) {
-// 		$http.get('/native/dist/data/about.json').success(function(data) {
-// 			// aboutCache.put('info', data);
-// 			appCache.put('info', data);
-// 			$scope.about = data;
-// 		});
-// 	}
-//
-// 	if(!$scope.skills) {
-// 		$http.get('/native/dist/data/about_skills.json').success(function(data) {
-// 			// aboutCache.put('skills', data);
-// 			appCache.put('skills', data);
-// 			$scope.skills = data;
-// 		});
-// 	}
-//
-// 	if(!$scope.works) {
-// 		$http.get('/native/dist/data/about_works.json').success(function(data) {
-// 			// aboutCache.put('works', data);
-// 			appCache.put('works', data);
-// 			$scope.works = data;
-// 		});
-// 	}
-// }]);
-// appCtrl.controller('portfolioCtrl', ['$scope', '$http', 'appsCache', function($scope, $http, appsCache) {
-// appCtrl.controller('portfolioCtrl', ['$scope', '$http', 'appCache', function($scope, $http, appCache) {
-// 	// $http.get('/data/apps.json').success(function(data) {
-// 	// 	$scope.apps = data;
-// 	//
-// 	// 	// alert($scope.apps[0].name);
-// 	// 	// for (var i = 0; i < $scope.apps.length; i++) {
-// 	// 	// 	// alert($scope.apps[i].title);
-// 	// 	// 	// if(localStorage.getItem($scope.apps[i].title) == "_viewed") {
-// 	// 	// 	// 	$scope.appViewed(i) = {'display':'none'};
-// 	// 	// 	// }
-// 	// 	// }
-// 	// });
-//
-// 	// $scope.apps = appsCache.get('data');
-//
-// 	// $scope.apps = appsCache.get('applications');
-//
-// 	$scope.apps = appCache.get('applications');
-//
-// 	if(!$scope.apps) {
-// 		$http.get('/native/dist/data/apps.json').success(function(data) {
-// 			// appsCache.put('applications', data);
-// 			appCache.put('applications', data);
-// 			$scope.apps = data;
-// 		});
-// 	}
-// }]);
-
-// appCtrl.controller('appViewCtrl', ['$scope', '$http', '$state', '$stateParams', '$sce', function($scope, $http, $state, $stateParams, $sce) {
-// 	$http.get('/native/dist/data/app_' + $stateParams.appName + '.json').success(function(data) {
-// 		$scope.project = data;
-// 		$scope.project.main = $sce.trustAsHtml($scope.project.content);
-// 	});
-// }]);
-
 app.directive('title', ['$rootScope', '$timeout', function($rootScope, $timeout) {
 	return {
 		link: function() {
 			var listener = function(event, toState) {
 				$timeout(function() {
-					$rootScope.title = (toState.pageTitle) ? toState.pageTitle : 'Tamik Android';
+					$rootScope.title = (toState.pageTitle) ? toState.pageTitle : 'Evil Wheels';
 				});
 			};
 			$rootScope.$on('$stateChangeSuccess', listener);
@@ -959,6 +629,14 @@ app.directive('title', ['$rootScope', '$timeout', function($rootScope, $timeout)
 	};
 }]);
 
-// app.factory('appCache', function($cacheFactory) {
-// 	return $cacheFactory('appCache', {});
-// });
+app.factory('mainCache', function($cacheFactory) {
+	return $cacheFactory('mainCache', {});
+});
+
+app.factory('eventsCache', function($cacheFactory) {
+	return $cacheFactory('eventsCache', {});
+});
+
+app.factory('crewCache', function($cacheFactory) {
+	return $cacheFactory('crewCache', {});
+});

@@ -71,7 +71,7 @@
 		</div>
 	</div>
 </div>
-<section class="map" id="map">
+<section class="map" id="map" ng-controller="mapCtrl">
 	<div class="mapContainer">
 		<div id="trailMap"></div>
 	</div>
@@ -113,7 +113,7 @@
 <div class="btw">
 	<h2>Видео</h2>
 </div>
-<section class="videos" id="videos">
+<section class="videos" id="videos" ng-controller="videoCtrl">
 	<div class="wrapper">
 		<div class="slider">
 			<ul>
@@ -168,7 +168,7 @@
 <div class="btw">
 	<h2>Мероприятия <span>2014&ndash;2016</span></h2>
 </div>
-<section class="events" id="events">
+<section class="events" id="events" ng-controller="eventsCtrl">
 	<div class="event" ng-repeat="event in events | orderBy:'-id'">
 		<div class="background" style="background-image: url({{event.image}});"></div>
 		<div class="info">
@@ -203,7 +203,7 @@
 <div class="btw clickable" id="composition">
 	<h2>Состав</h2>
 </div>
-<section class="crew" id="crew">
+<section class="crew" id="crew" ng-controller="crewCtrl">
 	<div class="person" ng-repeat="person in crew">
 		<div class="photo" style="background-image: url({{person.photo || '/native/nophoto.png'}});"></div>
 		<a href="{{person.link}}" target="_blank">

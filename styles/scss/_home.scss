@@ -951,6 +951,26 @@ section {
 		}
 	}
 
+	.mainPage {
+		display: inline-block;
+		vertical-align: middle;
+		margin-right: 15px;
+		transition: opacity 0.25s ease;
+
+		&:hover {
+			opacity: 0.75;
+		}
+
+		.logo {
+			background-image: url(/native/logo.png);
+			background-size: contain;
+			background-position: center;
+			background-repeat: no-repeat;
+			width: 150px;
+			height: 100px;
+		}
+	}
+
 	.controls {
 		display: inline-block;
 		width: auto;
