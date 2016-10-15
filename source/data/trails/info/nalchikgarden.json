@@ -1,0 +1,20 @@
+{
+	"class": "moto",
+	"name": "Сады",
+	"description": "Только для опытных мотоциклистов.",
+	"extension": "",
+	"traveltime": "",
+	"type": "",
+	"complexity": "",
+	"photo": "",
+	"map": {
+		"lat": 43.44098040,
+		"lng": 43.62501780,
+		"zoom": 12,
+		"color": "#000"
+	},
+	"footer": {
+		"call": "Предоставляем услуги гида",
+		"button": "Подробнее"
+	}
+}

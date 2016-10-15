@@ -1,0 +1,20 @@
+{
+	"class": "atv",
+	"name": "Маршрут #1",
+	"description": "Описание маршрута.",
+	"extension": "6.5 км",
+	"traveltime": "1.5 часа",
+	"type": "грунт, бездорожье",
+	"complexity": "тяжелая",
+	"photo": "/data/trails/photos/nalchikPaidTrack1_3.jpg",
+	"map": {
+		"lat": 43.42720250,
+		"lng": 43.64047440,
+		"zoom": 13,
+		"color": "#f00"
+	},
+	"footer": {
+		"call": "Устраиваем квадропрогулки",
+		"button": "Записаться"
+	}
+}

@@ -1,0 +1,50 @@
+[
+	{
+		"photo": "/data/crew/photos/vekshin.png",
+		"name": "Виталий Векшин",
+		"position": "Руководитель",
+		"link": "http://vk.com/id20207735"
+	},
+	{
+		"photo": "/data/crew/photos/plotnikov.png",
+		"name": "Виталий Плотников",
+		"position": "Представитель",
+		"link": "http://vk.com/id64715473"
+	},
+	{
+		"photo": "/data/crew/photos/dolganov.png",
+		"name": "Станислав Долганов",
+		"position": "SMM",
+		"link": "http://vk.com/id5403567"
+	},
+	{
+		"photo": "/data/crew/photos/gilyakhov.png",
+		"name": "Михаил Гиляхов",
+		"position": "Проектировщик",
+		"link": "http://vk.com/id8435751"
+	},
+	{
+		"photo": "/data/crew/photos/android.png",
+		"name": "Тамик Андроид",
+		"position": "Ревизор",
+		"link": "http://vk.com/id69993594"
+	},
+	{
+		"photo": "/data/crew/photos/shomakhov.png",
+		"name": "Заурбек Шомахов",
+		"position": "Секретарь",
+		"link": "http://vk.com/id3248222"
+	},
+	{
+		"photo": "",
+		"name": "Анна Витт",
+		"position": "Фотограф",
+		"link": "http://vk.com/id226394436"
+	},
+	{
+		"photo": "",
+		"name": "Денис Плотников",
+		"position": "Молодой райдер",
+		"link": ""
+	}
+]

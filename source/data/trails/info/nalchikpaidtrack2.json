@@ -1,0 +1,20 @@
+{
+	"class": "atv",
+	"name": "Маршрут #2",
+	"description": "Описание маршрута.",
+	"extension": "6 км",
+	"traveltime": "1.5 часа",
+	"type": "грунт, бездорожье",
+	"complexity": "средняя",
+	"photo": "/data/trails/photos/nalchikPaidTrack2_2.jpg",
+	"map": {
+		"lat": 43.44520250,
+		"lng": 43.65147440,
+		"zoom": 12,
+		"color": "#13f"
+	},
+	"footer": {
+		"call": "Устраиваем квадропрогулки",
+		"button": "Записаться"
+	}
+}

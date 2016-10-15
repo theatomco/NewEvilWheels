@@ -40,4 +40,7 @@ pip-log.txt
 #Mr Developer
 .mr.developer.cfg
 
-/data/
+node_modules/
+public/
+build/
+source/data/events/photos

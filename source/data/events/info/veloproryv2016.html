@@ -1,0 +1,42 @@
+<div class="container">
+	<p>Чемпионат Юга России по скоростному спуску на велосипеде проведенный в байк-парке Армхи. Прозовой фонд составил 80 000 рублей.</p>
+</div>
+<div class="gridWrapper">
+	<div class="grid gallery">
+		<div href="/native/close.png" class="sizer" data-size="1024x1024"></div>
+		<div href="/native/close.png" class="gutter" data-size="1024x1024"></div>
+	</div>
+</div>
+<script>
+	// var req = 'veloproryv2016';
+	var req = '//api.vk.com/method/photos.get?owner_id=-68058811&album_id=234087586'
+
+	$.ajax({
+		// url: '/getPhotos.php?location=' + req,
+		url: req,
+		type: 'GET',
+		success: function(data) {
+			for(i = 0; i <= data.length-1; i++) {
+				$(".gallery").append('<a href="' + data[i].src_xxbig + '" class="item" data-size="' + data[i].width + 'x' + data[i].height + '"><div style="background-image: url(' + data[i].src + ');"></div></a>');
+			}
+
+			$grid = $(".grid").masonry({
+				itemSelector: '.item',
+				columnWidth: '.sizer',
+				gutter: '.gutter',
+				percentPosition: true
+			});
+
+			$grid.imagesLoaded().progress(function() {
+				$grid.masonry('layout');
+			});
+		}
+	});
+	$.ajax({
+		url: '/getPhotos.php?getWidth=' + req,
+		type: 'GET',
+		success: function(data) {
+			$(".grid").css({"width":data.maxwidth});
+		}
+	});
+</script>

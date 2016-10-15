@@ -1,0 +1,20 @@
+{
+	"class": "moto",
+	"name": "Трасса «Азау»",
+	"description": "Трасса Чемпионата Юга России по мотоэндуро. На данный момент в стадии строительства.",
+	"extension": "5 км",
+	"traveltime": "",
+	"type": "",
+	"complexity": "экстремальная",
+	"photo": "/data/trails/photos/azauEnduroTrack_1.jpg",
+	"map": {
+		"lat": 43.26401670,
+		"lng": 42.48805440,
+		"zoom": 15,
+		"color": "#000"
+	},
+	"footer": {
+		"call": "Предоставляем услуги гида",
+		"button": "Подробнее"
+	}
+}

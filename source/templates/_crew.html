@@ -1,0 +1,30 @@
+<div class="btw" id="composition">
+	<a href="/" class="mainPage" title="На главную">
+		<div class="logo"></div>
+	</a>
+	<h2>Состав</h2>
+</div>
+<section class="crew" id="crew" style="display: block;">
+	<div class="person" ng-repeat="person in crew">
+		<div class="photo" style="background-image: url({{person.photo || '/native/nophoto.png'}});"></div>
+		<a href="{{person.link}}" target="_blank">
+			<div class="info">
+				<span class="name">{{person.name}}</span>
+				<span class="position">{{person.position}}</span>
+			</div>
+		</a>
+	</div>
+	<div class="person" style="display: none;">
+		<div class="photo" style="background-color: transparent; background-image: url(/native/close.png); transform: rotate(45deg);"></div>
+		<a href="#contacts">
+			<div class="info">
+				<span class="name">Присоединяйся!</span>
+			</div>
+		</a>
+	</div>
+</section>
+<section class="contacts" style="margin: 50px auto;">
+	<div class="copyright">
+		<p style="color: rgba(0, 0, 0, 0.5);">Кабардино-Балкарская региональная организация по развитию экстримальных видов спорта «Лихие Колеса» &copy; Все права защищены.</p>
+	</div>
+</section>

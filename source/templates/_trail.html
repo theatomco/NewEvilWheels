@@ -1,0 +1,36 @@
+<div class="fade" id="fadeComponent" ng-controller="trailCtrl"></div>
+<div class="view" id="viewComponent" ng-controller="trailCtrl">
+	<section class="mapSection">
+		<div class="innerContainer">
+			<div id="previewMap"></div>
+		</div>
+	</section>
+	<section class="infoSection">
+		<header>
+			<h2><span class="icon map {{trail.class}}" ng-if="trail.class"></span>{{trail.name || '404'}}</h2>
+			<button type="button" class="control inverted" id="closeComponent">X</button>
+		</header>
+		<div class="iContent">
+			<p class="description">{{trail.description || 'Данного маршрута не существует'}}</p>
+			<ul class="charasteristics">
+				<li ng-if="trail.extension">Протяженность: <b>{{trail.extension}}</b></li>
+				<li ng-if="trail.traveltime">Время в пути: <b>{{trail.traveltime}}</b></li>
+				<li ng-if="trail.type">Тип покрытия: <b>{{trail.type}}</b></li>
+				<li ng-if="trail.complexity">Сложность: <b>{{trail.complexity}}</b></li>
+			</ul>
+			<div class="photos" ng-if="trail.photo">
+				<a href="{{trail.photo}}" class="photo" target="_blank"><div style="background-image: url({{trail.photo}});"></div></a>
+			</div>
+		</div>
+		<footer>
+			<h2>{{trail.footer.call || 'Даем погонять'}}</h2>
+			<button type="button" class="primary">{{trail.footer.button || 'Подробнее'}}</button>
+			<p id="phoneservice">Вы можете связаться с нами по номеру: <a href="tel:+79887276959">+7 (988) 727-69-59</a></p>
+		</footer>
+	</section>
+	<script>
+		var previewMap = L.map('previewMap', {scrollWheelZoom: true, zoomControl: true}).setView([43.40920250, 43.65147440], 8);
+
+		L.tileLayer('https://api.mapbox.com/styles/v1/tamik/cipl12pqa0008dpm316s85ki9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoidGFtaWsiLCJhIjoiY2lwajBpYzRyMDA1M3ZibnQybzdhaXUzMSJ9.nGA_WBvVuRNdB4fNde1sBQ', { minZoom: 8, maxZoom: 18 }).addTo(previewMap);
+	</script>
+</div>

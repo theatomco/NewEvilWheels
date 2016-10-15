@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<kml xmlns='http://www.opengis.net/kml/2.2'>
+	<Document>
+		<name>Как добраться на автомобиле</name>
+		<Placemark>
+			<name>Проезд на автомобиле</name>
+			<styleUrl>#line-A61B4A-7-nodesc</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>43.645163,43.482913,0.0 43.646085,43.48243,0.0 43.647072,43.482212,0.0 43.648488,43.482321,0.0 43.653746,43.483255,0.0 43.660162,43.484345,0.0 43.666534,43.485404,0.0 43.66632,43.485653,0.0 43.665719,43.485528,0.0 43.665183,43.486244,0.0 43.666041,43.488984,0.0 43.66610500000001,43.489545,0.0 43.666019,43.490323,0.0 43.665612,43.492658,0.0 43.665547000000004,43.493234,0.0 43.665826,43.49409,0.0 43.666213,43.494682,0.0 43.665826,43.494604,0.0 43.661985,43.492923,0.0 43.661385,43.49293800000001,0.0 43.658745,43.491833,0.0 43.658295,43.49174,0.0 43.658059,43.491506,0.0 43.656471,43.490432,0.0 43.65466800000001,43.489156,0.0 43.654778,43.488864,0.0</coordinates>
+			</LineString>
+		</Placemark>
+		<Style id='line-A61B4A-7-nodesc-normal'>
+			<LineStyle>
+				<color>ff4A1BA6</color>
+				<width>7</width>
+			</LineStyle>
+			<BalloonStyle>
+				<text><![CDATA[<h3>$[name]</h3>]]></text>
+			</BalloonStyle>
+		</Style>
+		<Style id='line-A61B4A-7-nodesc-highlight'>
+			<LineStyle>
+				<color>ff4A1BA6</color>
+				<width>11.0</width>
+			</LineStyle>
+			<BalloonStyle>
+				<text><![CDATA[<h3>$[name]</h3>]]></text>
+			</BalloonStyle>
+		</Style>
+		<StyleMap id='line-A61B4A-7-nodesc'>
+			<Pair>
+				<key>normal</key>
+				<styleUrl>#line-A61B4A-7-nodesc-normal</styleUrl>
+			</Pair>
+			<Pair>
+				<key>highlight</key>
+				<styleUrl>#line-A61B4A-7-nodesc-highlight</styleUrl>
+			</Pair>
+		</StyleMap>
+	</Document>
+</kml>

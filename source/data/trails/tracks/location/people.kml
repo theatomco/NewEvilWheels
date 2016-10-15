@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<kml xmlns='http://www.opengis.net/kml/2.2'>
+	<Document>
+		<name>Как добраться пешком</name>
+		<Placemark>
+			<name>Проход пешком</name>
+			<styleUrl>#line-DB4436-4-nodesc</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>43.643602,43.485781,0.0 43.643918,43.485692,0.0 43.644197,43.48552,0.0 43.644653,43.485279,0.0 43.645018,43.485108,0.0 43.645667,43.4851,0.0 43.646032,43.485158,0.0 43.645973,43.48533,0.0 43.646466,43.485419,0.0 43.646981,43.485474,0.0 43.647282,43.485791,0.0 43.647568,43.485896,0.0 43.648177,43.485937,0.0 43.64843,43.48600700000001,0.0 43.648950000000006,43.486268,0.0 43.649207,43.486564,0.0 43.649352,43.486754,0.0 43.649524,43.486939,0.0 43.64998,43.48713,0.0 43.650283,43.487344,0.0 43.650401,43.487579,0.0 43.650575,43.487579,0.0 43.650717,43.487572,0.0 43.651147,43.48791,0.0 43.651342,43.488,0.0 43.65197,43.488144,0.0 43.652083,43.488288,0.0 43.652311,43.488416,0.0 43.65245800000001,43.488543,0.0 43.652493,43.488661,0.0 43.652608,43.488918,0.0 43.652734,43.489031,0.0 43.652901,43.489095,0.0 43.653115,43.489243,0.0 43.653469,43.489395,0.0 43.653679,43.489504,0.0 43.65389,43.489556,0.0 43.654537,43.489126,0.0 43.654778,43.488864,0.0</coordinates>
+			</LineString>
+		</Placemark>
+		<Style id='line-DB4436-4-nodesc-normal'>
+			<LineStyle>
+				<color>ff3644DB</color>
+				<width>4</width>
+			</LineStyle>
+			<BalloonStyle>
+				<text><![CDATA[<h3>$[name]</h3>]]></text>
+			</BalloonStyle>
+		</Style>
+		<Style id='line-DB4436-4-nodesc-highlight'>
+			<LineStyle>
+				<color>ff3644DB</color>
+				<width>6.0</width>
+			</LineStyle>
+			<BalloonStyle>
+				<text><![CDATA[<h3>$[name]</h3>]]></text>
+			</BalloonStyle>
+		</Style>
+		<StyleMap id='line-DB4436-4-nodesc'>
+			<Pair>
+				<key>normal</key>
+				<styleUrl>#line-DB4436-4-nodesc-normal</styleUrl>
+			</Pair>
+			<Pair>
+				<key>highlight</key>
+				<styleUrl>#line-DB4436-4-nodesc-highlight</styleUrl>
+			</Pair>
+		</StyleMap>
+	</Document>
+</kml>

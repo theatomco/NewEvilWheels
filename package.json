@@ -1,0 +1,32 @@
+{
+  "name": "newevilwheels",
+  "version": "1.0.1",
+  "description": "A reincarnation of Evil Wheels web-application",
+  "main": "gulpfile.js",
+  "dependencies": {},
+  "devDependencies": {
+    "browser-sync": "^2.14.3",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-cli": "^1.2.2",
+    "gulp-csso": "^2.0.0",
+    "gulp-htmlmin": "^2.0.0",
+    "gulp-imagemin": "^3.0.3",
+    "gulp-ng-annotate": "^2.0.0",
+    "gulp-ngmin": "^0.3.0",
+    "gulp-sass": "^2.3.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tamik/NewEvilWheels.git"
+  },
+  "author": "The Atom",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tamik/NewEvilWheels/issues"
+  },
+  "homepage": "https://github.com/Tamik/NewEvilWheels#readme"
+}

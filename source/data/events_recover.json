@@ -1,0 +1,65 @@
+[
+	{
+		"id": 1,
+		"title": "Funny Bunny",
+		"date": "17 августа 2014",
+		"image": "/data/events/cover/funnybunny.jpg",
+		"description": "Самый шумный велофестиваль в г. Нальчик!",
+		"link": "funnybunny"
+	},
+	{
+		"id": 2,
+		"title": "Фестиваль «День России»",
+		"date": "12 июня 2015",
+		"image": "/data/events/cover/festdayofrussia.jpg",
+		"description": "Велопробег организованный в честь дня России.",
+		"link": "festdayofrussia"
+	},
+	{
+		"id": 3,
+		"title": "Funny Bunny Vol. 2",
+		"date": "9 августа 2015",
+		"image": "/data/events/cover/funnybunnyvol2.jpg",
+		"description": "Вторая версия самого шумного велофестиваля в г. Нальчик!",
+		"link": "funnybunnyvol2"
+	},
+	{
+		"id": 4,
+		"title": "«Мир мотокросса» для детей-сирот",
+		"date": "13 сентября 2015",
+		"image": "/data/events/cover/smoto2015.jpg",
+		"description": "Социальная акция для привлечения молодежи к мотоциклетному виду спорта.",
+		"link": "socialmotoschool2015"
+	},
+	{
+		"id": 5,
+		"title": "Социальная акция «Мир мотокросса»",
+		"date": "23 апреля 2016",
+		"image": "/data/events/cover/smoto2016.jpg",
+		"description": "Социальная акция для привлечения молодежи к мотоциклетному виду спорта.",
+		"link": "socialmotoschool2016"
+	},
+	{
+		"id": 6,
+		"title": "Велопробег «Дорогами войны»",
+		"date": "9 мая 2016",
+		"image": "/data/events/cover/9may2016.jpg",
+		"description": "",
+		"link": "9may2016"
+	},
+	{
+		"id": 7,
+		"title": "Велопрорыв 2016",
+		"date": "10 июля 2016",
+		"image": "/data/events/cover/veloproryv2016.jpg",
+		"description": "Чемпионат Юга России по скоростному спуску на велосипеде.",
+		"link": "veloproryv2016"
+	},
+	{
+		"id": 8,
+		"title": "Evil Wheels Hard Party",
+		"date": "29 августа 2016",
+		"image": "",
+		"description": "Фестиваль молодежи КБР, в рамках которого собрались все друзья команды Evil Wheels."
+	}
+]

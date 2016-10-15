@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<kml xmlns='http://www.opengis.net/kml/2.2'>
+	<Document>
+		<name>Слой без названия</name>
+		<Placemark>
+			<name>Проход пешком через рынок</name>
+			<styleUrl>#line-FFDD5E-4-nodesc</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>43.6516428,43.4833097,0.0 43.6513424,43.4841816,0.0 43.6521149,43.4843918,0.0 43.6516321,43.4860732,0.0 43.6524045,43.4864313,0.0 43.6522865,43.4867504,0.0 43.6525655,43.4868205,0.0 43.6525333,43.4869917,0.0 43.6526513,43.4870929,0.0 43.6531663,43.4871396,0.0 43.6537135,43.4873887,0.0 43.654778,43.488864,0.0</coordinates>
+			</LineString>
+		</Placemark>
+		<Style id='line-FFDD5E-4-nodesc-normal'>
+			<LineStyle>
+				<color>ff5EDDFF</color>
+				<width>4</width>
+			</LineStyle>
+			<BalloonStyle>
+				<text><![CDATA[<h3>$[name]</h3>]]></text>
+			</BalloonStyle>
+		</Style>
+		<Style id='line-FFDD5E-4-nodesc-highlight'>
+			<LineStyle>
+				<color>ff5EDDFF</color>
+				<width>6.0</width>
+			</LineStyle>
+			<BalloonStyle>
+				<text><![CDATA[<h3>$[name]</h3>]]></text>
+			</BalloonStyle>
+		</Style>
+		<StyleMap id='line-FFDD5E-4-nodesc'>
+			<Pair>
+				<key>normal</key>
+				<styleUrl>#line-FFDD5E-4-nodesc-normal</styleUrl>
+			</Pair>
+			<Pair>
+				<key>highlight</key>
+				<styleUrl>#line-FFDD5E-4-nodesc-highlight</styleUrl>
+			</Pair>
+		</StyleMap>
+	</Document>
+</kml>

@@ -1,0 +1,20 @@
+{
+	"class": "mtb",
+	"name": "Байкпарк «Армхи»",
+	"description": "Первый в России байкпарк.",
+	"extension": "1.3 км",
+	"traveltime": "",
+	"type": "",
+	"complexity": "легкая",
+	"photo": "/data/trails/photos/bikeparkArmkhi_1.jpg",
+	"map": {
+		"lat": 42.80905800,
+		"lng": 44.70751700,
+		"zoom": 16,
+		"color": "#3b3"
+	},
+	"footer": {
+		"call": "Организовываем трансфер",
+		"button": "Связаться"
+	}
+}

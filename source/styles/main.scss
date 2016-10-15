@@ -1,0 +1,69 @@
+// @media(max-width: 768px) {
+// 	//ipad
+// }
+//
+// @media(max-width: 414px) {
+// 	//iphone 6 plus
+// }
+//
+// @media(max-width: 375px) {
+// 	//iphone 6
+// }
+//
+// @media(max-width: 320px) {
+// 	//iphone 5
+// }
+
+$white: rgba(255, 255, 255, 1);
+$black: rgba(0, 0, 0, 1);
+$digital: rgba(0, 90, 255, 0.75);
+
+$greenLine: #3B3;
+$blueLine: #13f;
+$redLine: #f00;
+
+@font-face {
+	font-family: 'Roboto';
+	font-weight: 300;
+	font-style: normal;
+	src: local('Roboto'), url('//cdn.Tamik.ru/storage/fonts/Roboto/Thin.ttf') format('ttf'), url('//cdn.Tamik.ru/storage/fonts/RobotoSVG/Thin.svg#robotothin') format('svg');
+}
+
+@font-face {
+	font-family: 'Roboto';
+	font-weight: 400;
+	font-style: normal;
+	src: local('Roboto'), url('//cdn.Tamik.ru/storage/fonts/Roboto/Regular.ttf') format('ttf'), url('//cdn.Tamik.ru/storage/fonts/RobotoSVG/Regular.svg#robotoregular') format('svg');
+}
+
+@font-face {
+	font-family: 'Roboto';
+	font-weight: 500;
+	font-style: normal;
+	src: local('Roboto'), url('//cdn.Tamik.ru/storage/fonts/Roboto/Medium.ttf') format('ttf'), url('//cdn.Tamik.ru/storage/fonts/RobotoSVG/Medium.svg#robotomedium') format('svg');
+}
+
+@font-face {
+	font-family: 'Roboto';
+	font-weight: 600;
+	font-style: normal;
+	src: local('Roboto'), url('//cdn.Tamik.ru/storage/fonts/Roboto/Bold.ttf') format('ttf'), url('//cdn.Tamik.ru/storage/fonts/RobotoSVG/Bold.svg#robotobold') format('svg');
+}
+
+@font-face {
+	font-family: 'Roboto';
+	font-weight: 700;
+	font-style: normal;
+	src: local('Roboto'), url('//cdn.Tamik.ru/storage/fonts/Roboto/Black.ttf') format('ttf'), url('//cdn.Tamik.ru/storage/fonts/RobotoSVG/Black.svg#robotoblack') format('svg');
+}
+
+@import "debug";
+@import "theme";
+@import "home";
+@import "event";
+@import "components";
+
+::selection {
+	background-color: rgba(0, 90, 255, 0.75);
+	color: rgba(255, 255, 255, 1);
+}

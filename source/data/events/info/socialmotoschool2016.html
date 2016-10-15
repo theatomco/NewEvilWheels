@@ -1,0 +1,40 @@
+<div class="container">
+	<p>Социальная акция для привлечения молодежи к мотоциклетному виду спорта.</p>
+</div>
+<div class="gridWrapper">
+	<div class="grid gallery">
+		<div href="/native/close.png" class="sizer" data-size="1024x1024"></div>
+		<div href="/native/close.png" class="gutter" data-size="1024x1024"></div>
+	</div>
+</div>
+<script>
+	var req = 'socialmotoschool2016';
+
+	$.ajax({
+		url: '/getPhotos.php?location=' + req,
+		type: 'GET',
+		success: function(data) {
+			for(i = 0; i <= data.length-1; i++) {
+				$(".gallery").append('<a href="' + data[i].src + '" class="' + data[i].class + '" data-size="' + data[i].width + 'x' + data[i].height + '"><div style="background-image: url(' + data[i].src + ');"></div></a>');
+			}
+
+			$grid = $(".grid").masonry({
+				itemSelector: '.item',
+				columnWidth: '.sizer',
+				gutter: '.gutter',
+				percentPosition: true
+			});
+
+			$grid.imagesLoaded().progress(function() {
+				$grid.masonry('layout');
+			});
+		}
+	});
+	$.ajax({
+		url: '/getPhotos.php?getWidth=' + req,
+		type: 'GET',
+		success: function(data) {
+			$(".grid").css({"width":data.maxwidth});
+		}
+	});
+</script>

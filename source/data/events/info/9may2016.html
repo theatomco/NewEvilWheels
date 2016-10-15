@@ -1,0 +1,54 @@
+<div class="container">
+	<p>
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident perspiciatis deleniti repellendus quaerat voluptatem totam eveniet fuga sequi placeat voluptates animi voluptatum tempora iste modi dignissimos dolor labore, officia praesentium ipsam autem laborum ab quae dolorum. Atque mollitia soluta libero, ea, placeat ab rem consectetur sapiente sit dolores a numquam.
+	</p>
+</div>
+<div class="gridWrapper">
+	<div class="grid gallery">
+		<div href="/native/close.png" class="sizer" data-size="1024x1024"></div>
+		<div href="/native/close.png" class="gutter" data-size="1024x1024"></div>
+	</div>
+</div>
+<script>
+	var req = '9may2016';
+
+	function getPhotos(req) {
+		$.ajax({
+			url: '//api.vk.com/method/photos.get?owner_id=-1&album_id=1',
+			type: 'GET',
+			success: function(data) {
+				for(i = 0; i < data.response.length; i++) {
+					$(".gallery").append('<a href="' + data.response[i].xxbig_src + '" class="' + data[i].class + '" data-size="' + data.response[i].width + 'x' + data.response[i].height + '"><div style="background-image: url(' + data.response[i].xxbig_src + ');"></div></a>');
+				}
+			}
+		});
+	}
+
+	// $.ajax({
+	// 	url: '/getPhotos.php?location=' + req,
+	// 	type: 'GET',
+	// 	success: function(data) {
+	// 		for(i = 0; i <= data.length-1; i++) {
+	// 			$(".gallery").append('<a href="' + data[i].src + '" class="' + data[i].class + '" data-size="' + data[i].width + 'x' + data[i].height + '"><div style="background-image: url(' + data[i].src + ');"></div></a>');
+	// 		}
+	//
+	// 		$grid = $(".grid").masonry({
+	// 			itemSelector: '.item',
+	// 			columnWidth: '.sizer',
+	// 			gutter: '.gutter',
+	// 			percentPosition: true
+	// 		});
+	//
+	// 		$grid.imagesLoaded().progress(function() {
+	// 			$grid.masonry('layout');
+	// 		});
+	// 	}
+	// });
+	// $.ajax({
+	// 	url: '/getPhotos.php?getWidth=' + req,
+	// 	type: 'GET',
+	// 	success: function(data) {
+	// 		$(".grid").css({"width":data.maxwidth});
+	// 	}
+	// });
+</script>

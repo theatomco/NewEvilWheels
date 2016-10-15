@@ -1,0 +1,49 @@
+<div class="eventView">
+	<header class="event">
+		<nav>
+			<a href="/events" class="button inverted">Вернуться</a>
+		</nav>
+		<div class="background" style="background-image: url({{event.image}});"></div>
+		<h1 class="title">{{event.title || "Загрузка"}}</h1>
+		<span class="date">{{event.date || "Пожалуйста, подождите"}}</span>
+		<span class="location">{{event.location}}</span>
+	</header>
+	<div class="content">
+		{{event.content}}
+	</div>
+	<footer></footer>
+</div>
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="pswp__bg"></div>
+    <div class="pswp__scroll-wrap">
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Закрыть"></button>
+                <button class="pswp__button pswp__button--fs" title="Полноэкранный режим"></button>
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Назад">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Далее">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
